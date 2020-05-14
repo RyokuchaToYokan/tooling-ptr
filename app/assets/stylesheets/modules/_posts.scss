@@ -1,3 +1,66 @@
 * {
   box-sizing: border-box;
 }
+
+
+// サイドバー
+.side {
+  background-color: #f0ffff	;
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  .side__head {
+    background-color: #20b2aa	;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .side__head__box {
+        height: 30px;
+        width: 210px;
+        display: flex;
+        justify-content: space-between;
+      .side__head__box__name {
+        font-size: 20px;
+        height: 30px;
+        line-height: 30px;
+      }
+      .side__head__box__menu {
+        width: 60px;
+        height: 30px;
+        line-height: 30px;
+        display: flex;
+        justify-content: flex-end;
+        .side__head__box__menu__icon {
+          color: #ffffff;
+          text-decoration: none;
+          padding-left: 5px;
+        }
+      }
+    }
+  }
+}
+
+
+// ヘッダー
+.head {
+  background-color: #2f3e51;
+  width: calc(100vw - 250px);
+  height: 100px;
+  position: fixed;
+  top: 0;
+  left: 250px;
+}
+
+
+// メイン画面
+.main {
+  background-color: #fff8dc	;
+  position: fixed;
+  width: calc(100vw - 250px);
+  height: calc(100% - 100px);
+  top: 100px;
+  left: 250px;
+}
