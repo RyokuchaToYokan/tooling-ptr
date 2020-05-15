@@ -5,11 +5,8 @@
 
 // サイドバー
 .side {
-  background-color: #f0ffff	;
   width: 250px;
   height: 100vh;
-  position: fixed;
-  z-index: 2;
   left: 0;
   .side__head {
     background-color: #20b2aa	;
@@ -17,9 +14,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: fixed;
+    padding: 20px;
+    width: 250px;
     .side__head__box {
         height: 30px;
-        width: 210px;
+        width: 100%;
         display: flex;
         justify-content: space-between;
       .side__head__box__name {
@@ -39,6 +39,27 @@
           color: #ffffff
         }
       }
+    }
+  }
+  .side__menu {
+    background-color: coral;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    padding-top: 100px;
+    .side__menu__content {
+      &:hover {
+        color: #000;
+        background-color: #aaa;
+        cursor: pointer;
+      }
+      color: #555;
+      display: inline-block;
+      width: 250px;
+      height: 40px;
+      line-height: 40px;
+      padding-left: 20px;
+      margin: 3px 0;
     }
   }
 }
