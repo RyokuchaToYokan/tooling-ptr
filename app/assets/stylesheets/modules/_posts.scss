@@ -26,6 +26,8 @@
         font-size: 20px;
         height: 30px;
         line-height: 30px;
+        width: 80%;
+        word-wrap: normal;
       }
       .side__head__box__menu {
         width: 60px;
@@ -34,9 +36,7 @@
         display: flex;
         justify-content: flex-end;
         .side__head__box__menu__icon {
-          color: #ffffff;
-          text-decoration: none;
-          padding-left: 5px;
+          color: #ffffff
         }
       }
     }
@@ -52,6 +52,65 @@
   position: fixed;
   top: 0;
   left: 250px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  // タイトル
+  .head__left {
+    color: #fff;
+    font-size: 40px;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 
+      0 0 0.05em #F06292,
+      0 0 0.10em #F06292,
+      0 0 0.15em #F06292,
+      0 0 0.30em #F06292;
+  	filter: saturate(80%);
+    letter-spacing: 2px;
+    padding-left: 30px;
+    width: 40%;
+  }
+  // 検索の窓
+  .head__center {
+    width: 500px;
+    height: 35px;
+    margin-right: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .head__center__input {
+      height: 35px;
+      width: 100%;
+      color: gray;
+      line-height: 35px;
+      padding-left: 10px;
+      border: lightgray solid 1px;
+      border-radius: 0 2.5px 2.5px 0;
+    }
+    .head__center__btn {
+      width: 70px;
+      height: 35px;
+      background-color: #38aef0;
+      right: 0;
+      color: #ffffff;
+      font-size: 16px;
+      text-align: center;
+      line-height: 35px;
+      cursor: pointer;
+      border: lightgray solid 1px;
+      border-radius: 0 2.5px 2.5px 0;
+    }
+  }
+  // アイコンスペース
+  .head__right {
+    width: 150px;
+    height: 40px;
+    background-color: red;
+    margin-right: 30px;
+    line-height: 40px;
+    text-align: center;
+  }
 }
 
 
