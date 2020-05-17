@@ -5,6 +5,7 @@
 
 // サイドバー
 .side {
+  z-index: 99;
   background-color: black;
   width: 250px;
   height: 100vh;
@@ -36,9 +37,30 @@
         line-height: 30px;
         display: flex;
         justify-content: flex-end;
+        
         .side__head__box__menu__icon {
-          color: #ffffff
+          color: #ffffff;
+          cursor: pointer;
+          position: fixed;
         }
+        .side__head__box__menu__inner {
+          left: 235px;
+          position: fixed;
+          width: 120px;
+          display: none; 
+          border-radius: 3px;
+          padding: 5px 0;
+          background-color: wheat;
+          .side__head__box__menu__inner__content {
+            &:hover {
+              color: #000;
+              background-color: #aaa;
+              cursor: pointer;
+            }
+            padding-left: 5px;
+          }
+        }
+        .side__head__box__menu__inner {display: none;}
       }
     }
   }
@@ -66,8 +88,10 @@
 }
 
 
+
 // ヘッダー
 .head {
+  z-index: -1;
   background-color: #2f3e51;
   width: calc(100vw - 250px);
   height: 100px;
@@ -126,7 +150,7 @@
   }
   // アイコンスペース
   .head__right {
-    width: 150px;
+    width: 100px;
     height: 40px;
     background-color: red;
     margin-right: 30px;
@@ -154,6 +178,7 @@ td {
 
 
 .main {
+  z-index: -2;
   background-color: #fff8dc	;
   position: fixed;
   width: calc(100vw - 250px);
