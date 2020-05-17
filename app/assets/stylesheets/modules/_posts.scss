@@ -5,7 +5,6 @@
 
 // サイドバー
 .side {
-  z-index: 99;
   background-color: black;
   width: 250px;
   height: 100vh;
@@ -41,13 +40,12 @@
         .side__head__box__menu__icon {
           color: #ffffff;
           cursor: pointer;
-          position: fixed;
+          position: relative;
         }
         .side__head__box__menu__inner {
-          left: 235px;
-          position: fixed;
+          top: 68px;
+          position: absolute;
           width: 120px;
-          display: none; 
           border-radius: 3px;
           padding: 5px 0;
           background-color: wheat;
@@ -91,7 +89,6 @@
 
 // ヘッダー
 .head {
-  z-index: -1;
   background-color: #2f3e51;
   width: calc(100vw - 250px);
   height: 100px;
@@ -178,7 +175,6 @@ td {
 
 
 .main {
-  z-index: -2;
   background-color: #fff8dc	;
   position: fixed;
   width: calc(100vw - 250px);
