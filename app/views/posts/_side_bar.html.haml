@@ -1,0 +1,23 @@
+.side
+  -# サイドバーヘッダー部分
+  .side__head
+    .side__head__box
+      .side__head__box__name
+        123456 789 0123456789
+        -# = current_user.name
+      .side__head__box__menu
+        -# = link_to "#", class: "side__head__box__menu__icon fa-2x" do
+        = icon("fa", "bars", class: "side__head__box__menu__icon fa-2x ac1 open1")
+        .side__head__box__menu__inner
+          %ul
+            %li
+              .side__head__box__menu__inner__contents
+                - @usercontents.each do |uc|
+                  .side__head__box__menu__inner__content
+                    = uc
+  
+  -# サイドバーメニュー
+  .side__menu
+    - @sidecontents.each do |sc|
+      .side__menu__content
+        = sc

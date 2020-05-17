@@ -66,3 +66,5 @@ gem 'pry-rails'
 gem "font-awesome-sass"
 gem "haml-rails"
 gem "devise"
+gem "data-confirm-modal"
+gem "jquery-rails"
