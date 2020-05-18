@@ -12,6 +12,7 @@ a {
   width: 250px;
   height: 100vh;
   left: 0;
+  border-right: gray 1px solid;
   .side__head {
     background-color: #20b2aa	;
     height: 100px;
@@ -21,6 +22,8 @@ a {
     position: fixed;
     padding: 20px;
     width: 250px;
+    border-right: gray 1px solid;
+    border-bottom: gray 1px solid;
     .side__head__box {
         height: 30px;
         width: 100%;
@@ -41,7 +44,7 @@ a {
         justify-content: flex-end;
         
         .side__head__box__menu__icon {
-          color: #ffffff;
+          color: #000;
           cursor: pointer;
           position: relative;
         }
@@ -51,7 +54,7 @@ a {
           width: 120px;
           border-radius: 3px;
           padding: 5px 0;
-          background-color: wheat;
+          background-color: #f0ebeb;
           .side__head__box__menu__inner__content {
             &:hover {
               color: #000;
@@ -101,9 +104,9 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: gray 1px solid;
   // タイトル
   .head__left {
-    color: #fff;
     font-size: 40px;
     font-style: italic;
     font-weight: bold;
@@ -116,6 +119,9 @@ a {
     letter-spacing: 2px;
     padding-left: 30px;
     width: 40%;
+  }
+  .head__left a {
+    color: #fff;
   }
   // 検索の窓
   .head__center {
@@ -201,7 +207,7 @@ td {
     width: 80%;
     overflow: scroll;
     .main__left__notice {
-      background-color: lightgray;
+      // background-color: lightgray;
       height: 200px;
       padding: 10px 10px 10px 40px;
       .main__left__notice__title {
@@ -209,6 +215,7 @@ td {
         font-size: 21px;
         width: 80%;
         border-bottom: 1px solid gray;
+        background-color: lightgray;
       }
       .main__left__notice__content {
         padding-top: 10px;
@@ -217,10 +224,11 @@ td {
         color: green;
         overflow: scroll;
         border-bottom: 1px solid gray;
+        background-color: #fff;
       }
     }
     .main__left__newinfo {
-      background-color: lightcyan;
+      // background-color: lightcyan;
       height: 450px;
       padding: 10px 10px 10px 40px;
       .main__left__newinfo__title {
@@ -228,6 +236,7 @@ td {
         font-size: 21px;
         width: 80%;
         border-bottom: 1px solid gray;
+        background-color: lightcyan;
       }
       .main__left__newinfo__content {
         color: blue;
@@ -236,6 +245,7 @@ td {
         width: 80%;
         overflow: scroll;
         border-bottom: 1px solid gray;
+        background-color: #fff;
       }
     }
   }
