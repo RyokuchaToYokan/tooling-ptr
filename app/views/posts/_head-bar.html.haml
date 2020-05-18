@@ -8,4 +8,7 @@
     .head__center__btn
       検索
   .head__right
-    ログイン
+    - if user_signed_in?
+      = link_to "ログアウト", destroy_user_session_path, method: :delete
+    - else
+      = link_to "ログイン", new_user_session_path, class: 'post'
