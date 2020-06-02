@@ -1,0 +1,30 @@
+.search-box {
+  width: 500px;
+  height: 35px;
+  margin-right: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .input {
+    height: 35px;
+    width: 100%;
+    color: gray;
+    line-height: 35px;
+    padding-left: 10px;
+    border: lightgray solid 1px;
+    border-radius: 0 2.5px 2.5px 0;
+  }
+  .btn {
+    width: 70px;
+    height: 35px;
+    background-color: lightgray;
+    right: 0;
+    color: #ffffff;
+    font-size: 16px;
+    text-align: center;
+    line-height: 35px;
+    cursor: pointer;
+    border: lightgray solid 1px;
+    border-radius: 0 2.5px 2.5px 0;
+  }
+}

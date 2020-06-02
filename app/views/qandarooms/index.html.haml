@@ -1,0 +1,20 @@
+.wrapper
+  = render "posts/side_bar"
+  = render "posts/head-bar"
+  .main
+    .main__left
+      .search-box
+        .input
+          search
+        .btn
+          検索
+      .main__left__group-list
+        -# - current_user.groups.each do |group|
+          .main__left__group-list__box
+            -# = link_to group_messages_path(group) do
+              .main__left__group-list__box__group-name
+                -# = group.name
+              .main__left__group-list__box__group-message
+                -# = group.show_last_message
+    .main__right
+      関連広告
