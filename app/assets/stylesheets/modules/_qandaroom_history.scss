@@ -1,12 +1,3 @@
-.qanda--title {
-  display: block;
-  text-align: center;
-  font-size: 23px;
-  margin: 15px 0 20px;
-  font-weight: bold;
-  letter-spacing: 5px;
-}
-
 .qanda--history {
   margin-top: 120px;
   position: fixed;
@@ -16,9 +7,10 @@
     padding-left: 8px;
     border-bottom: #000 double;
     letter-spacing: 1px;
+    border-radius: 7px 7px 0 0;
   }
   .history--boxes {
-    height: 424px;
+    height: 477px;
     overflow: scroll;
     .history__list {
       .qanda--history__room {
@@ -26,11 +18,10 @@
         padding: 5px 0 5px 10px;
         display: grid;
         color: #000;
+        border: 1px #dedede solid;
         &:hover {
           color: #000;
           background-color: #dedede;
-          width: 100%;
-          height: 100%;
         }
         &-name {
           font-size: 15px;
@@ -47,11 +38,5 @@
         }
       }
     }
-  }
-}
-
-.qanda__rooms {
-  background-color: lightsteelblue;
-  .qanda__rooms--box {
   }
 }

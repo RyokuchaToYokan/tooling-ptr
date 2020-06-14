@@ -1,0 +1,81 @@
+.qanda--title {
+  text-align: center;
+  font-size: 23px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  letter-spacing: 5px;
+}
+
+.create__room {
+  .create__room--btn {
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    .plus--btn {
+      color: #0099e8;
+      text-decoration: none;
+      width: 100%;
+      margin-top: 8px;
+      cursor: pointer;
+      &::before {
+        content: "\f0fe";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        margin-right: 5px;
+      }
+      &:hover {
+      text-decoration: underline;
+      }
+    }
+  }
+}
+
+.qanda__rooms {
+  background-color: #f0ebeb;
+  margin: 0 auto;
+  width: 800px;
+  height: 100vh;
+  margin-top: 15px;
+  border-radius: 7px;
+  .rooms--title {
+    display: inline-block;
+    background-color: #3CCACE;
+    font-size: 18px;
+    padding-left: 8px;
+    border-bottom: #000 double;
+    letter-spacing: 2px;
+    width: 220px;
+    border-radius: 7px 7px 0 0;
+  }
+  .rooms__boxes {
+    .rooms__list {
+      .qanda__room {
+        background-color: #fff;
+        padding: 5px 0 5px 10px;
+        display: grid;
+        color: #000;
+        width: 47%;
+        margin: 10px;
+        float: left;
+        border-radius: 7px;
+        &:hover {
+          color: #000;
+          background-color: #dedede;
+        }
+        &--name {
+          font-size: 15px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        &--message {
+          padding-left: 15px;
+          font-size: 13px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+}
