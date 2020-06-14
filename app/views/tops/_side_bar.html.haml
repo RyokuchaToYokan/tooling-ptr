@@ -4,7 +4,7 @@
     .side__head__box
       .side__head__box__name
         - if user_signed_in?
-          = current_user.name
+          = current_user.nickname
         - else
           Guest
         -# = current_user.name
