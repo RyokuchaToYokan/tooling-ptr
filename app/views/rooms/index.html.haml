@@ -13,7 +13,10 @@
             検索
       .create__room
         .create__room--btn
-          = link_to "相談室を新規作成する", new_room_path, class: "plus--btn"
+          - if user_signed_in?
+            = link_to "相談室を新規作成する", new_room_path, class: "plus--btn"
+          - else
+            = link_to "相談室を新規作成する", new_user_registration_path, class: "plus--btn"
       .qanda__rooms
         .rooms--title
           相談室一覧（新着順）
@@ -31,28 +34,4 @@
 
 
     .main__right
-      .qanda--history
-        .history--title
-          あなたの相談履歴
-        .history--boxes
-          %ul
-            - if user_signed_in? && current_user.id == @room.user_id
-              - current_user.rooms.each do |room|
-                .history__list
-                  %li
-                  = link_to "#", class: "qanda--history__room" do
-                    %span.qanda--history__room-name
-                      Q : #{room.name}
-                    %span.qanda--history__room-message
-                      今日ツーリングへ行くのですが、天気予報ではどうやら
--# .qanda--history
--#   .history--title
--#     過去の相談履歴
--#     -# - current_user.groups.each do |group|
--#       .qanda--history__box
--#         -# = link_to group_messages_path(group) do
--#           .qanda--history__box__room-name
-            
--#             -# = group.name
--#           .qanda--history__box__room-message
--#             -# = group.show_last_message
+      = render "qanda_history"

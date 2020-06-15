@@ -9,15 +9,4 @@
       .qanda__rooms
         = render partial: 'form', locals: { room: @room }
     .main__right
-      .qanda--history
-        .history--title
-          あなたの相談履歴
-        .history--boxes
-          %ul
-            .history__list
-              %li
-              = link_to "#", class: "qanda--history__room" do
-                %span.qanda--history__room-name
-                  風が強く、雨が降りそうな時の準備について
-                %span.qanda--history__room-message
-                  今日ツーリングへ行くのですが、天気予報ではどうやら
+      = render "qanda_history"
