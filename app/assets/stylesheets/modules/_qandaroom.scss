@@ -1,4 +1,4 @@
-.qanda--title {
+.main--title {
   text-align: center;
   font-size: 23px;
   margin-bottom: 20px;
@@ -34,9 +34,9 @@
   background-color: #f0ebeb;
   margin: 0 auto;
   width: 800px;
-  height: 100vh;
   margin-top: 15px;
   border-radius: 7px;
+  display: grid;
   .rooms--title {
     display: inline-block;
     background-color: #3CCACE;

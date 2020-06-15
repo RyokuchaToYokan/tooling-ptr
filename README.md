@@ -9,6 +9,7 @@ Things you may want to cover:
   ruby 2.5.1p57 (2018-03-29 revision 63029) [x86_64-darwin19]
 
 # DB
+※全てcreate_tableにid: :integerを指定
 
 ## users table
 
@@ -23,7 +24,8 @@ Things you may want to cover:
 - has_many :groups, through: :group_users
 - has_many :messages
 - has_many :posts
-- has_many :rooms
+- has_many :room_users
+- has_many :rooms, through: :rooms_users
 - has_many :chat
 - validates :nickname, presence: true, uniqueness: true
 
@@ -32,8 +34,8 @@ Things you may want to cover:
 
 |Column|Type|Option|
 |------|----|------|
-|group |references|foreign_key: true
-|user  |reserences|foreign_key: true
+|group |references|type: :integer, foreign_key: true
+|user  |reserences|type: :integer, foreign_key: true
 
 - belongs_to :group
 - belongs_to :user
@@ -82,19 +84,21 @@ Things you may want to cover:
 
 |Column|Type|Option|
 |------|----|------|
-|name  |string|null: false|
+|name     |string|null:  false|
+|status_id|integer|null: false|
 
 - has_many :room_users
 - has_many :users, through: :room_users
 - has_many :chat
+- attribute :status_id, :integer, default: 1
 
 
 ## room_users table
 
 |Column|Type|Option|
 |------|----|------|
-|room |references|foreign_key: true
-|user |reserences|foreign_key: true
+|room |references|type: :integer, foreign_key: true
+|user |reserences|type: :integer, foreign_key: true
 
 - belongs_to :room
 - belongs_to :user

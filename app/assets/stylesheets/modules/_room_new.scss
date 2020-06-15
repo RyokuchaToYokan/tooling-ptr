@@ -1,0 +1,82 @@
+.room-form {
+  width: 980px;
+  margin: 60px auto;
+  padding: 40px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  &__errors {
+    margin: 15px 20px;
+    padding: 20px 40px;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    text-align: center;
+  }
+  &__label {
+    font-weight: bold;
+  }
+  &__input {
+    width: 80%;
+    line-height: 30px;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    margin: 15px 110px 15px auto;
+    display: block;
+    }
+  &__action-btn {
+    padding: 12px 20px;
+    color: #fff;
+    background-color: #38aef0;
+    border: 0;
+    display: block;
+    float: right;
+    margin: 0 110px 15px 0;
+  }
+  &__field {
+    margin-top: 10px;
+    &:after {
+      content: "";
+      clear: both;
+      display: block;
+    }
+    &--left {
+      float: left;
+      width: 15%;
+      padding-right: 20px;
+      padding-left: 20px;
+      box-sizing: border-box;
+      text-align: right;
+    }
+    &--right {
+      float: right;
+      width: 85%;
+    }
+  }
+}
+
+.room-user {
+  padding: 0 15px;
+  line-height: 50px;
+  font-size: 14px;
+  border-bottom: 1px solid #ddd;
+  &:after {
+    content: "";
+    clear: both;
+    display: block;
+  }
+  &__name {
+    float: left;
+  }
+  &__btn {
+    float: right;
+    display: inline-block;
+    cursor: pointer;
+    &--add {
+      color: #38aef0;
+    }
+    &--remove {
+      color: #f05050;
+    }
+  }
+}
