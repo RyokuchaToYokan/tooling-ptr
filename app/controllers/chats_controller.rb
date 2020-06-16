@@ -2,7 +2,6 @@ class ChatsController < ApplicationController
   before_action :set_room
 
   def index
-    # binding.pry
     @chat = Chat.new
     @chats = @room.chats.includes(:user)
   end
