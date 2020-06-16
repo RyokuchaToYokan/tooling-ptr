@@ -108,13 +108,13 @@ Things you may want to cover:
 
 |Column|Type|Option|
 |------|----|------|
-|content|string|null: false|
-|room_id|references|foreign_key: true|
-|user_id|references|foreign_key: true|
+|content|string|
+|image  |string|
+|room   |references|type: :integer, foreign_key: true|
+|user   |references|type: :integer, foreign_key: true|
 
 - belongs_to :room
 - belongs_to :user
-- has_many :images
 
 
 ## images tables
