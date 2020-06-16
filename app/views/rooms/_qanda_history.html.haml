@@ -2,14 +2,13 @@
   .history--title
     あなたの相談履歴
   .history--boxes
-    %ul
-      - if user_signed_in?
-        - current_user.rooms.each do |room|
-          .history__list
-            %li
-            = link_to room_chats_path(room), class: "qanda--history__room" do
-              %span.qanda--history__room-name
-                Q : #{room.name}
-              %span.qanda--history__room-message
-                今日ツーリングへ行くのですが、天気予報ではどうやら
-                -# = group.show_last_message
+    - if user_signed_in?
+      - current_user.rooms.each do |room|
+        .history__list
+          = link_to room_chats_path(room), class: "qanda--history__room" do
+            %span.qanda--history__room-name
+              Q : #{room.name}
+            %span.qanda--history__room-date
+              = room.created_at.strftime("作成日：%Y年%m月%d日 %H時%M分")
+            %span.qanda--history__room-message
+              = room.show_last_chat

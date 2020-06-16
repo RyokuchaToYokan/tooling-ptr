@@ -28,8 +28,10 @@
                 = link_to room_chats_path(room), class: "qanda__room" do
                   %span.qanda__room--name
                     Q : #{room.name}
+                  %span.qanda__room--date
+                    = room.created_at.strftime("作成日：%Y年%m月%d日 %H時%M分")
                   %span.qanda__room--message
-                    現在搭載中
+                    = room.show_last_chat
               
 
 
