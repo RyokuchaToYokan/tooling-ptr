@@ -12,7 +12,7 @@ $(document).on('turbolinks:load', function() {
   $(function () {
     // ナビの範囲外のどこかをクリックしたときに発動
     $(".main").on('click', function () {
-        if ($('.side__head__box__menu__icon').is(':visible')) {
+        if ($('.side__head__box__menu__inner').is(':visible')) {
             // ナビが表示されていたらcloseを実行
             $('.side__head__box__menu__icon').trigger('click');
         } else {
@@ -20,5 +20,5 @@ $(document).on('turbolinks:load', function() {
             event.stopPropagation();
         }
     });
-});
+  });
 });
