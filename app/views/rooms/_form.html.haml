@@ -1,8 +1,10 @@
 = form_for room do |f|
-  .room-form__errors
-    %h2 10件のエラーが発生しました
-    %ul
-      %li nameを入力してください
+  - if room.errors.any?
+    .room-form__errors
+      %h2= "#{room.errors.full_messages.count}件のエラーが発生しました。"
+      %ul
+        - room.errors.full_messages.each do |message|
+          %li= message
   .room-form__field
     .room-form__field--left
       = f.label :name, class: 'room-form__label'
