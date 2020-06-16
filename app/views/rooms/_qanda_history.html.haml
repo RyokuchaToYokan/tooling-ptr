@@ -7,7 +7,7 @@
         - current_user.rooms.each do |room|
           .history__list
             %li
-            = link_to "#", class: "qanda--history__room" do
+            = link_to room_chats_path(room), class: "qanda--history__room" do
               %span.qanda--history__room-name
                 Q : #{room.name}
               %span.qanda--history__room-message

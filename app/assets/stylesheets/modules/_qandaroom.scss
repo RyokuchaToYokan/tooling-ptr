@@ -1,11 +1,3 @@
-.main--title {
-  text-align: center;
-  font-size: 23px;
-  margin-bottom: 20px;
-  font-weight: bold;
-  letter-spacing: 5px;
-}
-
 .create__room {
   .create__room--btn {
     text-align: center;
@@ -32,11 +24,10 @@
 
 .qanda__rooms {
   background-color: #f0ebeb;
-  margin: 0 auto;
-  width: 800px;
   margin-top: 15px;
   border-radius: 7px;
   display: grid;
+  margin: 0 35px;
   .rooms--title {
     display: inline-block;
     background-color: #3CCACE;

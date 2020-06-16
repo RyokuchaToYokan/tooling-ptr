@@ -25,7 +25,7 @@
             - @rooms.each do |room|
               .rooms__list
                 %li
-                = link_to "#", class: "qanda__room" do
+                = link_to room_chats_path(room), class: "qanda__room" do
                   %span.qanda__room--name
                     Q : #{room.name}
                   %span.qanda__room--message
