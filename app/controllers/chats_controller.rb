@@ -9,7 +9,9 @@ class ChatsController < ApplicationController
   def create
     @chat = @room.chats.new(chat_params)
     if @chat.save
-      redirect_to room_chats_path(@room), notice: "メッセージが送信されました"
+      respond_to do |format|
+        format.json
+      end
     else
       @chats = @room.chats.includes(:user)
       flash.now[:alert] = "メッセージを入力してください"
