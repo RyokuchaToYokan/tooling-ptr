@@ -1,0 +1,101 @@
+// チャット表示画面
+
+.chats {
+  background-color: #fafafa;
+  height: calc(100vh - 246px);
+  overflow: scroll;
+  .chat {
+    margin: 10px 10px 10px 20px;
+    display: flex;
+    flex-direction: column;
+    .upper-chat {
+      margin-bottom: 10px;
+      &__user-name {
+        background-color: #b7ecdb;
+        border: 1px solid #dedede;
+        border-radius: 5px;
+        font-size: 16px;
+        color: #333333;
+        display: inline-flex;
+        padding-left: 5px;
+      }
+      &__date {
+        font-size: 12px;
+        color: #999999;
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+    }
+    .lower-chat {
+      &__content {
+        font-size: 14px;
+        color: #434A54;
+        padding: 3px 10px 5px 10px;
+        word-break: break-all;
+        width: 95%;
+        background-color: #fff;
+        border-radius: 0 0 5px 5px;
+        display: table-cell;
+      }
+      &__image {
+        width: 400px;
+        height: 250px;
+        object-fit: contain;
+      }
+    }
+  }
+}
+
+
+// 投稿フォーム
+.chat--form {
+  height: 80px;
+  bottom: 0px;
+  .form__chat {
+    width: 75%;
+    line-height: 25px;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    margin: 15px 0 15px 15px;
+    display: inline-block;
+  }
+  .form__mask {
+    display: inline-block;
+    margin-left: 12px;
+    font-size: 25px;
+    .form__mask__image {
+      cursor: pointer;
+      .hidden {
+        display: none;
+      }
+
+    }
+  }
+  .form__submit {
+    border-radius: 6px;
+    padding: 12px 20px;
+    color: #fff;
+    background-color: #38aef0;
+    border: 0;
+    display: block;
+    float: right;
+    margin: 15px;
+  }
+}
+
+
+.go--registration {
+  text-align: center;
+  line-height: 80px;
+  .regist--btn {
+    display: inline-block;
+    height: 50px;
+    padding: 0 30px;
+    line-height: 50px;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 2px;
+    color: #fff;
+    background-color: #38aef0;
+  }
+}

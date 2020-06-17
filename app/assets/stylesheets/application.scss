@@ -1,4 +1,14 @@
 @import "reset";
-@import "modules/posts";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "modules/mixin";
+@import "modules/top";
+@import "modules/side_bar";
+@import "modules/head_bar";
+@import "modules/user";
+@import "modules/_search-box";
+@import "modules/posts";
+@import "modules/qandaroom";
+@import "modules/qanda_history";
+@import "modules/room_new";
+@import "modules/chat";

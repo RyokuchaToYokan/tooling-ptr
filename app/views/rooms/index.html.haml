@@ -1,0 +1,39 @@
+.wrapper
+  = render "tops/side_bar"
+  = render "tops/head-bar"
+  .main
+    .main__left
+      .main__head
+        .main--title
+          お悩み相談室
+        .search-box
+          .input
+            search
+          .btn
+            検索
+      .create__room
+        .create__room--btn
+          - if user_signed_in?
+            = link_to "相談室を新規作成する", new_room_path, class: "plus--btn"
+          - else
+            = link_to "相談室を新規作成する", new_user_registration_path, class: "plus--btn"
+      .qanda__rooms
+        .rooms--title
+          相談室一覧（新着順）
+        .rooms__boxes
+          %ul
+            - @rooms.each do |room|
+              .rooms__list
+                %li
+                = link_to room_chats_path(room), class: "qanda__room" do
+                  %span.qanda__room--name
+                    Q : #{room.name}
+                  %span.qanda__room--date
+                    = room.created_at.strftime("作成日：%Y年%m月%d日 %H時%M分")
+                  %span.qanda__room--message
+                    = room.show_last_chat
+              
+
+
+    .main__right
+      = render "qanda_history"

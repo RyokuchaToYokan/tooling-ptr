@@ -1,0 +1,41 @@
+.wrapper
+  = render "tops/side_bar"
+  = render "tops/head-bar"
+  .main
+    .main__left
+      .main__head
+        .main--title
+          Q : #{@room.name}
+
+
+      .qanda__rooms
+        .chats
+          .chat
+            - @chats.each do |chat|
+              .upper-chat
+                .upper-chat__user-name
+                  = chat.user.nickname
+                  .upper-chat__date
+                    = chat.created_at.strftime("%Y年%m月%d日 %H時%M分")
+                .lower-chat{data: {chat: {id: chat.id}}}
+                  - if chat.content.present?
+                    %p.lower-chat__content
+                      = chat.content
+                  = image_tag chat.image.url, class: 'lower-chat__image' if chat.image.present?
+
+
+      .chat--form
+        - if user_signed_in?
+          = form_for [@room, @chat] do |f|
+            = f.text_field :content, class: 'form__chat', placeholder: 'type a chat'
+            .form__mask
+              = f.label :image, class: 'form__mask__image' do
+                = icon('fas', 'image', class: 'icon')
+                = f.file_field :image, class: 'hidden'
+            = f.submit 'Send', class: 'form__submit', id: "new_chat"
+        - else
+          .go--registration
+            = link_to "Create Acount", new_user_registration_path, class: "regist--btn", data: {"turbolinks": false}
+
+    .main__right
+      = render "rooms/qanda_history"
