@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :room_users
   has_many :rooms, through: :room_users
   has_many :chats
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :prefecture
 
   validates :nickname, presence: true, uniqueness: true
   

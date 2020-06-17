@@ -73,4 +73,5 @@ gem "jquery-rails"
 gem "jquery-turbolinks"
 gem "carrierwave"
 gem "mini_magick"
-gem 'ancestry'
+gem "ancestry"
+gem "active_hash"

@@ -13,15 +13,15 @@
         = icon("fa", "bars", class: "side__head__box__menu__icon fa-2x ac1 open1")
         .side__head__box__menu__inner
           %ul
-            %li= link_to "マイメニュー", "#", class: "side__head__box__menu__inner__content", data: {"turbolinks": false}
-            %li= link_to "マイグループ", "#", class: "side__head__box__menu__inner__content", data: {"turbolinks": false}
+            %li= link_to "マイページ", user_path(current_user), class: "side__head__box__menu__inner__content", data: {"turbolinks": false}
+            %li= link_to "マイグループ\n↑(工事中)", "#", class: "side__head__box__menu__inner__content", data: {"turbolinks": false}
             %li= link_to "投稿", "#", class: "side__head__box__menu__inner__content", data: {"turbolinks": false}
   
   -# サイドバーメニュー
   .side__menu
     %ul
       %li= link_to "お悩み相談室", rooms_path, class: "side__menu__contents", data: {"turbolinks": false}
-      %li= link_to "グループ一覧", "#", class: "side__menu__contents", data: {"turbolinks": false}
+      %li= link_to "グループ一覧(工事中)", "#", class: "side__menu__contents", data: {"turbolinks": false}
       %li= link_to "バイク板", "#", class: "side__menu__contents", data: {"turbolinks": false}
       %li= link_to "おすすめルート", "#", class: "side__menu__contents", data: {"turbolinks": false}
       %li= link_to "おすすめスポット", "#", class: "side__menu__contents", data: {"turbolinks": false}
@@ -30,4 +30,4 @@
       %li= link_to "おすすめのウェア", "#", class: "side__menu__contents", data: {"turbolinks": false}
       %li= link_to "おすすめのアイテム", "#", class: "side__menu__contents", data: {"turbolinks": false}
       %li= link_to "交通情報の共有", "#", class: "side__menu__contents", data: {"turbolinks": false}
-      %li= link_to "お問い合わせ", "#", class: "side__menu__contents", data: {"turbolinks": false}
+      %li= link_to "お問い合わせ(工事中)", "#", class: "side__menu__contents", data: {"turbolinks": false}

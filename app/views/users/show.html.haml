@@ -1,0 +1,49 @@
+.wrapper
+  = render "tops/side_bar"
+  = render "tops/head-bar"
+  .main
+    .main__left
+      .main__head
+        .main--title
+          = "#{current_user.nickname}"
+          %span のマイページ
+          = link_to "[編集]", edit_user_path(current_user), class: "edit--jump"
+      .profile__area
+        .profile__boxes
+          .profile--title
+            プロフィール
+          .profile--picture
+            .profile--picture__inner
+              image
+          .profile__box
+            .profile__list
+              .profile__list--left My Bike
+              .profile__list--right YZF-R25
+            .profile__list
+              .profile__list--left 都道府県
+              .profile__list--right 兵庫県
+        .my-post__boxes
+          .my-post--title
+            投稿一覧
+          .my-post__box
+            - if user_signed_in?
+              - current_user.rooms.each do |room|
+                .my-post__list
+                  = link_to room_chats_path(room), class: "my-post__content" do
+                    .my-post__content--title
+                      Q : #{room.name}
+                    %span.my-post__content--date
+                      = room.created_at.strftime("作成日：%Y年%m月%d日 %H時%M分")
+                    .my-post__content--flex
+                      .my-post__content--text
+                        = room.show_last_chat
+                      .my-post__content--image
+                        image
+            
+              
+
+              
+
+
+    .main__right
+      = render "rooms/qanda_history"

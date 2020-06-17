@@ -1,7 +1,6 @@
 class RoomsController < ApplicationController
 
   def index
-    # binding.pry
     @rooms = Room.all
   end
 
