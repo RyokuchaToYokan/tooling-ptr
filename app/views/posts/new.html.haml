@@ -1,0 +1,15 @@
+.wrapper
+  = render "tops/side_bar"
+  = render "tops/head-bar"
+  .main
+    .main__left
+      .main__head
+        .main--title
+          新規投稿作成ページ
+      .qanda__rooms
+        = form_with model: @post, class: :form, local: true do |form|
+          = form.text_field :title, placeholder: :タイトル, class: :form__title
+          = form.text_area :content, placeholder: :ブログ本文, class: :form__text
+          = form.submit '投稿する', class: :form__btn
+    .main__right
+      = render "rooms/qanda_history"

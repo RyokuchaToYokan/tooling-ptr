@@ -8,4 +8,5 @@ Rails.application.routes.draw do
       resources :chats, only: :index, defaults: { format: 'json' }
     end
   end
+  resources :posts,only: [:new, :create, :edit]
 end
