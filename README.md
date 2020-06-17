@@ -70,14 +70,18 @@ Things you may want to cover:
 
 |Column|Type|Option|
 |------|----|------|
-|user_id      |integer|null: false, foreign_key: true|
-|content      |string|null: false|
-|category_id  |integer|null: false|
-|prefecrure_id|integer|null: false|
+|user         |references|type: :integer foreign_key: true|
+|title        |string    |null: false|
+|content      |text      |null: false|
+|category     |references|type: :integer, foreign_key: true|
+|prefecrure_id|integer   |null: false|
 
 - belongs_to :user
 - has_many :images
-- belongs_to :category
+- accepts_nested_attributes_for :images
+- belongs_to :category, optional: true
+- extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :prefecture
 
 
 ## rooms table
@@ -128,6 +132,17 @@ Things you may want to cover:
 - belongs_to :message
 - belongs_to :post
 - belongs_to :chat
+
+
+## categories tables
+
+|Column|Type|Option|
+|------|----|------|
+|name    |integer|null: false|
+|ancestry|integer||
+
+- has_many :posts
+- has_ancestry
 
 
 <!-- * System dependencies
