@@ -1,5 +1,5 @@
 $(function(){
-  
+
   function buildHTML(chat){
     if (chat.image) {
       var html =
@@ -11,7 +11,7 @@ $(function(){
               ${chat.created_at}
             </div>
           </div>
-          <div class="lower-chat">
+          <div class="lower-chat" data-chat-id=${chat.id}>
             <p class="lower-chat__content">
               ${chat.content}
             </p>
@@ -29,7 +29,7 @@ $(function(){
               ${chat.created_at}
             </div>
           </div>
-          <div class="lower-chat">
+          <div class="lower-chat" data-chat-id=${chat.id}>
             <p class="lower-chat__content">
               ${chat.content}
             </p>
@@ -62,4 +62,37 @@ $(function(){
       alert("メッセージ送信に失敗しました");
     });
   });
+
+  var reloadChats = function() {
+    //カスタムデータ属性を利用し、ブラウザに表示されている最新メッセージのidを取得
+    var last_chat_id = $('.lower-chat:last').data("chat-id");
+    $.ajax({
+      //ルーティングで設定した通り/rooms/id番号/api/chatsとなるよう文字列を書く
+      url: "api/chats",
+      //ルーティングで設定した通りhttpメソッドをgetに指定
+      type: 'get',
+      dataType: 'json',
+      //dataオプションでリクエストに値を含める
+      data: {id: last_chat_id}
+    })
+    .done(function(chats) {
+      if (chats.length !==0) {
+        //追加するHTMLの入れ物を作る
+        var insertHTML = '';
+        //配列messagesの中身一つ一つを取り出し、HTMLに変換したものを入れ物に足し合わせる
+        $.each(chats, function(i, chat) {
+          insertHTML += buildHTML(chat)
+        });
+        //メッセージが入ったHTMLに、入れ物ごと追加
+        $('.chat').append(insertHTML);
+        $('.chats').animate({ scrollTop: $('.chats')[0].scrollHeight});
+      }
+    })
+    .fail(function() {
+      alert('error');
+    });
+  };
+  if (document.location.href.match(/rooms\/\d+\/chats/)) {
+    setInterval(reloadChats, 7000);
+  }
 });
