@@ -15,8 +15,8 @@ $(function(){
             <p class="lower-chat__content">
               ${chat.content}
             </p>
+            <img src=${chat.image} class="lower-chat__image">
           </div>
-          <img src=${chat.image.url} class="lower-chat__image">
         </div>`
       return html;
     } else {
