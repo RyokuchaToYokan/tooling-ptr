@@ -14,7 +14,7 @@
             = form.label :image, class: 'form__mask__image' do
               = icon('fas', 'image', class: 'icon')
               = form.file_field :image, class: 'hidden'
-          = form.submit '投稿する', class: :form__post__btn
+          = form.submit '投稿する', class: :form__post__btn, data: {"turbolinks": false}
 
           .category__boxes
             %p.category__about

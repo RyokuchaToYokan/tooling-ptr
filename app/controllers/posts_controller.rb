@@ -9,11 +9,12 @@ class PostsController < ApplicationController
   end
 
   def create
-    Post.create(post_params)
+    # Post.create(post_params)
     params[:post][:category_id] = "" if params[:parent_category].blank? || params[:child_category].blank?
+    @post = Post.new(post_params)
 
     if @post.save
-      redirect_to root_path
+      redirect_to root_path, notice: "投稿しました"
     else
       # @post.images.build
       @parent_category = params[:parent_category] if params[:parent_category].present?
