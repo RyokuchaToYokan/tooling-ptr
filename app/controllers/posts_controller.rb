@@ -23,6 +23,16 @@ class PostsController < ApplicationController
     end
   end
 
+  def get_child_categories
+    parent_category = Category.find(params[:id])
+    @child_categories = parent_category.children
+  end
+
+  def get_grandchild_categories
+    child_category = Category.find(params[:id])
+    @grandchild_categories = child_category.children
+  end
+
   private
   def post_params
     params.require(:post).permit(:title, :content, :prefecture_id, :category_id).merge(user_id: current_user.id)
