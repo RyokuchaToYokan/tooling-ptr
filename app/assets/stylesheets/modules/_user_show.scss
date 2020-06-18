@@ -19,6 +19,7 @@
     border: 3px solid #dedede;
     border-radius: 5px;
     display: inline-block;
+    position: relative;
     .profile--title {
       padding-left: 6px;
       background-color: #b7ecdb;
@@ -93,12 +94,13 @@
             display: flex;
             .my-post__content--text {
               border-right: 2px solid #aaa;
-              white-space: nowrap;
               overflow: hidden;
-              text-overflow: ellipsis;
               display: inline-block;
               width: 65%;
               margin-right: 10px;
+              word-break: break-all;
+              height: 90px;
+              padding: 10px;
             }
             .my-post__content--image {
               display: inline-block;
@@ -108,6 +110,26 @@
           }
         }
       }
+    }
+  }
+}
+
+.posting-box {
+  position: absolute;
+  width: 104px;
+  height: 48px;
+  left: 10%;
+  top: 50%;
+  .posting__btn {
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 12px 20px;
+    color: #fff;
+    background-color: #38aef0;
+    border: 0;
+    display: block;
+    &:hover {
+      background-color: #FF9900;
     }
   }
 }
