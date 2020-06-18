@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    rooms = @user.rooms
+    @historys = current_user.rooms.order("created_at DESC")
   end
 
   def update

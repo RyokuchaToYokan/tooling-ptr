@@ -7,9 +7,60 @@
         .main--title
           新規投稿作成ページ
       .qanda__rooms
-        = form_with model: @post, class: :form, local: true do |form|
-          = form.text_field :title, placeholder: :タイトル, class: :form__title
-          = form.text_area :content, placeholder: :ブログ本文, class: :form__text
-          = form.submit '投稿する', class: :form__btn
+        = form_with model: @post, class: :form__post, local: true do |form|
+          = form.text_field :title, placeholder: :タイトル, class: :form__post__title
+          = form.text_area :content, placeholder: :ブログ本文, class: :form__post__text
+          .form__mask
+            = form.label :image, class: 'form__mask__image' do
+              = icon('fas', 'image', class: 'icon')
+              = form.file_field :image, class: 'hidden'
+          = form.submit '投稿する', class: :form__post__btn
+
+          .category__boxes
+            %p.category__about
+            .field__category
+              .field__header
+                = form.label :カテゴリー
+                %span.required 必須
+              - case controller.action_name
+              - when 'new'
+                .field__input
+                  = form.collection_select :category_id, @parent_categories.all, :id, :name, { prompt: '選択してください' }, { name: 'parent_category', id: 'parent_category' }
+                  = icon('fas', 'chevron-down')
+              - when 'create'
+                - if @parent_category.nil?
+                  .field__input
+                    = form.collection_select :category_id, @parent_categories.all, :id, :name, { prompt: '選択してください' }, { name: 'parent_category', id: 'parent_category' }
+                    = icon('fas', 'chevron-down')
+                - elsif @parent_category.present? && @child_category.nil?
+                  .field__input
+                    = form.collection_select :category_id, @parent_categories.all, :id, :name, { selected: @parent_category }, { name: 'parent_category', id: 'parent_category' }
+                    = icon('fas', 'chevron-down')
+                  .field__input#children__select
+                    = form.collection_select :category_id, Category.find(@parent_category).children.all, :id, :name, { prompt: '選択してください' }, { name: 'child_category', id: 'child_category' }
+                    = icon('fas', 'chevron-down')
+                - elsif @child_category.present? && @grandchild_category.nil?
+                  .field__input
+                    = form.collection_select :category_id, @parent_categories.all, :id, :name, { selected: @parent_category }, { name: 'parent_category', id: 'parent_category' }
+                    = icon('fas', 'chevron-down')
+                  .field__input#children__select
+                    = form.collection_select :category_id, Category.find(@parent_category).children.all, :id, :name, { selected: @child_category }, { name: 'child_category', id: 'child_category' }
+                    = icon('fas', 'chevron-down')
+                  .field__input#grandchildren__select
+                    = form.collection_select :category_id, Category.find(@child_category).children.all, :id, :name, { prompt: '選択してください' }, { name: 'item[category_id]', id: 'grandchild_category' }
+                    = icon('fas', 'chevron-down')
+                - else
+                  .field__input
+                    = form.collection_select :category_id, @parent_categories.all, :id, :name, { selected: @parent_category }, { name: 'parent_category', id: 'parent_category' }
+                    = icon('fas', 'chevron-down')
+                  .field__input#children__select
+                    = form.collection_select :category_id, Category.find(@parent_category).children.all, :id, :name, { selected: @child_category }, { name: 'child_category', id: 'child_category' }
+                    = icon('fas', 'chevron-down')
+                  .field__input#grandchildren__select
+                    = form.collection_select :category_id, Category.find(@child_category).children.all, :id, :name, { selected: @grandchild_category }, { name: 'item[category_id]', id: 'grandchild_category' }
+                    = icon('fas', 'chevron-down')
+
+
+
     .main__right
       = render "rooms/qanda_history"

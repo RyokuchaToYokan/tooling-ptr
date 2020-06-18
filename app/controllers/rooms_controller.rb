@@ -2,6 +2,7 @@ class RoomsController < ApplicationController
 
   def index
     @rooms = Room.all
+    @historys = current_user.rooms.order("created_at DESC")
   end
 
   def new
