@@ -12,5 +12,7 @@ class User < ApplicationRecord
   belongs_to_active_hash :prefecture
 
   validates :nickname, presence: true, uniqueness: true
+
+  attribute :prefecture_id, :integer, default: 48
   
 end

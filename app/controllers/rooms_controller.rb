@@ -1,15 +1,17 @@
 class RoomsController < ApplicationController
 
   def index
-    @rooms = Room.all
-    @historys = current_user.rooms.order("created_at DESC")
+    @rooms = Room.all.order("created_at DESC")
+    @historys = current_user.rooms.order("created_at DESC") if user_signed_in?
   end
 
   def new
     @room = Room.new
+    @historys = current_user.rooms.order("created_at DESC")
   end
 
   def create
+    @historys = current_user.rooms.order("created_at DESC") if user_signed_in?
     @room = Room.new(room_params)
     @room.user_ids = current_user.id
     if @room.save

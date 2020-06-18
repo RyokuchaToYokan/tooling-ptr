@@ -137,3 +137,69 @@
     font-size: 13px;
   }
 }
+
+
+.form__mask {
+  display: inline-block;
+  margin: 0 5px 0 12px;
+  font-size: 30px;
+  position: relative;
+  .form__mask__image {
+    cursor: pointer;
+    .hidden {
+      display: none;
+    }
+    span {
+      font-size: 13px;
+    }
+  }
+}
+
+.required {
+  color: red;
+  font-size: 13px;
+  padding-left: 5px;
+}
+
+.tips {
+  color: #aaa;
+  font-size: 13px;
+  padding-left: 5px;
+}
+
+.edit--prefecture {
+  margin: 10px 5px 15px 5px;
+  .field__prefecture {
+    .field__header {
+      font-size: 14px;
+      .required {
+        color: red;
+        font-size: 13px;
+        padding-left: 5px;
+      }
+    }
+    .field__input {
+      margin-top: 5px;
+      width: 230px;
+      border: 1px solid #DDDDDD;
+      border-radius: 4px;
+      .category__inner {
+        cursor: pointer;
+        width: 230px;
+        padding: 10px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border: 1px solid #999;
+        background: #eee;
+        background: right 50% no-repeat, -webkit-linear-gradient(top, #fff 0%,#efebe1 100%);
+        background: right 50% no-repeat, linear-gradient(to bottom, #fff 0%,#efebe1 100%);
+        background-size: 20px, 100%;
+      }
+    }
+  }
+}
+
+.btn {
+  cursor: pointer;
+}

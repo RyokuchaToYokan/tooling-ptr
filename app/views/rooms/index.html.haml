@@ -6,18 +6,19 @@
       .main__head
         .main--title
           お悩み相談室
+        
+      .qanda__rooms
         .search-box
           .input
             search
           .btn
             検索
-      .create__room
-        .create__room--btn
-          - if user_signed_in?
-            = link_to "相談室を新規作成する", new_room_path, class: "plus--btn"
-          - else
-            = link_to "相談室を新規作成する", new_user_registration_path, class: "plus--btn"
-      .qanda__rooms
+        .create__room
+          .create__room--btn
+            - if user_signed_in?
+              = link_to "相談室を新規作成する", new_room_path, class: "plus--btn"
+            - else
+              = link_to "相談室を新規作成する", new_user_registration_path, class: "plus--btn"
         .rooms--title
           相談室一覧（新着順）
         .rooms__boxes

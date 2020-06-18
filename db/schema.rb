@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 2020_06_17_102317) do
 
   create_table "chats", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
-    t.string "image"
     t.integer "room_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
@@ -60,6 +59,7 @@ ActiveRecord::Schema.define(version: 2020_06_17_102317) do
 
   create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "prefecture_id"
+    t.string "bike", default: ""
     t.string "nickname", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

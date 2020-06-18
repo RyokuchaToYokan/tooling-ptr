@@ -19,6 +19,7 @@ Things you may want to cover:
 |mail         |string|null: false, unique: true|
 |password     |string|null: false|
 |prefecture_id|integer||
+|bike         |string||
 
 - has_many :group_users
 - has_many :groups, through: :group_users
@@ -27,7 +28,10 @@ Things you may want to cover:
 - has_many :room_users
 - has_many :rooms, through: :rooms_users
 - has_many :chat
+- has_one :images
 - validates :nickname, presence: true, uniqueness: true
+- attribute :prefecture_id, :integer, default: 48
+
 
 
 ## group_users table
@@ -58,23 +62,23 @@ Things you may want to cover:
 |Column|Type|Option|
 |------|----|------|
 |content |string|null: false|
-|group_id|references|foreign_key: true|
-|user_id |references|foreign_key: true|
+|group   |references|foreign_key: true|
+|user    |references|foreign_key: true|
 
 - belongs_to :group
 - belongs_to :user
-- has_many :images
+- has_one :images
 
 
 ## posts table
 
 |Column|Type|Option|
 |------|----|------|
-|user         |references|type: :integer foreign_key: true|
 |title        |string    |null: false|
 |content      |text      |null: false|
 |category     |references|type: :integer, foreign_key: true|
 |prefecrure_id|integer   |null: false|
+|user         |references|type: :integer foreign_key: true|
 
 - belongs_to :user
 - has_many :images
@@ -113,25 +117,30 @@ Things you may want to cover:
 |Column|Type|Option|
 |------|----|------|
 |content|string|
-|image  |string|
 |room   |references|type: :integer, foreign_key: true|
 |user   |references|type: :integer, foreign_key: true|
 
 - belongs_to :room
 - belongs_to :user
+- has_one :image
 
 
 ## images tables
 
 |Column|Type|Option|
 |------|----|------|
-|message_id|integer|null: false, foreign_key: true|
-|post_id   |integer|null: false, foreign_key: true|
-|chat_id   |integer|null: false, foreign_key: true|
+|picture   |string ||
+|message_id|integer   |foreign_key: true|
+|chat_id   |integer   |foreign_key: true|
+|user_id   |integer   |foreign_key: true|
+|post      |references|type: :integer, foreign_key: true|
+
 
 - belongs_to :message
-- belongs_to :post
 - belongs_to :chat
+- mount_uploader :picture, ImageUpLoader
+- belongs_to :post
+- belongs_to :user
 
 
 ## categories tables

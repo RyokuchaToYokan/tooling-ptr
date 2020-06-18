@@ -14,12 +14,32 @@
             .field
               .field-label
                 = f.label :nickname
+                %span.required 必須
               .field-input
                 = f.text_field :nickname, autofocus: true
             .field
               .field-label
                 = f.label :email
+                %span.required 必須
               .field-input
                 = f.email_field :email
+            .field
+              .field-label
+                = f.label :bike
+                %span.tips 現在所有するバイクの代表
+              .field-input
+                = f.text_field :bike
+            .form__mask
+              = f.label :image, class: 'form__mask__image' do
+                = icon('fas', 'image', class: 'icon')
+                = f.file_field :image, class: 'hidden'
+                %span ← プロフィール画像を登録する
+            .edit--prefecture
+              .field__prefecture
+                .field__header
+                  = f.label :都道府県
+                  %span.tips 任意
+                .field__input
+                  = f.collection_select :prefecture_id, Prefecture.all, :id, :name, { prompt: '選択してください' }, { class: "category__inner" }
             .actions
               = f.submit "Update", class: 'btn'

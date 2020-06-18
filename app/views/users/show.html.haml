@@ -14,14 +14,16 @@
             プロフィール
           .profile--picture
             .profile--picture__inner
-              image
+              image(工事中)
           .profile__box
             .profile__list
               .profile__list--left My Bike
-              .profile__list--right YZF-R25
+              .profile__list--right
+                = @user.bike
             .profile__list
               .profile__list--left 都道府県
-              .profile__list--right 兵庫県
+              .profile__list--right
+                = @user.prefecture.name
         
         .posting-box
           = link_to "投稿する", new_post_path, class: "posting__btn", data: {"turbolinks": false}
