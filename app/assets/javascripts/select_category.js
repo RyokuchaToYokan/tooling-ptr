@@ -19,7 +19,7 @@ $(function(){
   function appendGrandchildrenBox(insertHTML){
     const grandchildrenHTML = `
       <div class='field__input' id='grandchildren__select'>
-        <select id='grandchild_category' name='item[category_id]'>
+        <select id='grandchild_category' name='post[category_id]'>
           <option value=''>選択してください</option>
           ${insertHTML}
         </select>
