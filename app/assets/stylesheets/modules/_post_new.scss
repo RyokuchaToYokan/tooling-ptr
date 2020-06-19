@@ -1,5 +1,4 @@
 .form__post {
-  margin: 0 35px;
   .form__post__title {
     display: block;
     margin: 20px auto;
@@ -19,42 +18,53 @@
     resize: vertical;
     word-break: break-all;
   }
-  .form__mask {
+  .form__post__btns {
     display: inline-block;
-    margin: 0 5px 0 12px;
-    font-size: 30px;
-    position: relative;
-    .form__mask__image {
+    margin: 0 15px;
+    text-align: center;
+    .form__mask {
+      display: inline-block;
+      margin: 0 20px 0 12px;
+      font-size: 30px;
+      // position: relative;
+      .form__mask__image {
+        &:hover {
+          background-color: #FF9900;
+        }
+        cursor: pointer;
+        .hidden {
+          display: none;
+        }
+      }
+    }
+    .form__post__btn {
+      cursor: pointer;
+      border-radius: 6px;
+      padding: 12px 20px;
+      color: #fff;
+      background-color: #38aef0;
+      border: 0;
+      display: block;
+      // float: right;
+      margin: 15px 0;
       &:hover {
         background-color: #FF9900;
       }
-      cursor: pointer;
-      .hidden {
-        display: none;
-      }
-    }
-  }
-  .form__post__btn {
-    cursor: pointer;
-    border-radius: 6px;
-    padding: 12px 20px;
-    color: #fff;
-    background-color: #38aef0;
-    border: 0;
-    display: block;
-    float: right;
-    margin: 15px;
-    &:hover {
-      background-color: #FF9900;
     }
   }
 }
 
 
+.select__boxes {
+  display: inline-flex;
+  width: 100%;
+  justify-content: center;
+}
+
 .category__boxes {
   display: inline-block;
   margin: 0 5px 15px 5px;
-  position: absolute;
+  // position: absolute;
   .category__about {
   }
   .field__category {
@@ -92,7 +102,7 @@
 .prefecture__boxes {
   display: inline-block;
   margin: 0 5px 15px 5px;
-  position: absolute;
+  // position: absolute;
   left: 380px;
   .field__prefecture {
     .field__header {
