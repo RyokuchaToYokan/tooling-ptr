@@ -5,7 +5,6 @@ class ChatsController < ApplicationController
     @chat = Chat.new
     @chats = @room.chats.includes(:user)
     @historys = current_user.rooms.order("created_at DESC")
-
   end
 
   def create
