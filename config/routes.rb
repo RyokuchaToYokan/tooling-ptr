@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "tops#index"
+  resources :top, only: [:index, :show]
   resources :users, only: [:edit, :show, :update]
   resources :rooms, only: [:index, :new, :create] do
     resources :chats, only: [:index, :create]
@@ -10,8 +11,10 @@ Rails.application.routes.draw do
   end
   resources :posts, except: :show do
     collection do
-      get 'get_child_categories', defaults: { format: 'json' }
+      get 'get_child_categories', defaults:      { format: 'json' }
       get 'get_grandchild_categories', defaults: { format: 'json' }
     end
   end
+
+  resources :categories, only:      [:index, :show]
 end
