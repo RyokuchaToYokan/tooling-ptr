@@ -54,11 +54,12 @@
                   = f.collection_select :prefecture_id, Prefecture.all, :id, :name, { prompt: '選択してください' }, { class: "category__inner" }
 
             .form__post__btns
+              .field__header
+                = f.label :画像を投稿する
               .form__mask
                 = f.label :image, class: 'form__mask__image' do
-                  = icon('fas', 'image', class: 'icon')
-                  = f.fields_for :images do |i|
-                    = i.file_field :picture, class: 'hidden'
+                  = f.fields_for :image do |i|
+                    = i.file_field :picture, class: 'image--post'
               = f.submit '投稿する', class: :form__post__btn, data: {"turbolinks": false}
 
 

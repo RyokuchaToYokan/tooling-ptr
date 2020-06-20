@@ -24,15 +24,16 @@
     text-align: center;
     .form__mask {
       display: inline-block;
-      margin: 0 20px 0 12px;
+      margin: 0;
       font-size: 30px;
       .form__mask__image {
-        &:hover {
-          background-color: #FF9900;
-        }
         cursor: pointer;
         .hidden {
           display: none;
+        }
+        .image--post {
+          font-size: 15px;
+          width: 121px;
         }
       }
     }
@@ -44,7 +45,7 @@
       background-color: #38aef0;
       border: 0;
       display: block;
-      margin: 15px 0;
+      margin: 15px auto;
       &:hover {
         background-color: #FF9900;
       }
