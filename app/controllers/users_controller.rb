@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
 
+  def new
+    @user = User.new
+    @user.images.new
+  end
+
   def edit
   end
 
@@ -20,6 +25,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:nickname, :email, :image, :bike, :prefecture_id)
+    params.require(:user).permit(:nickname, :email, :bike, :prefecture_id, images_attributes: [:picture])
   end
 end

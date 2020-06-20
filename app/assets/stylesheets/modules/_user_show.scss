@@ -12,6 +12,7 @@
 
 .profile__area {
   display: flex;
+  min-width: 660px;
   .profile__boxes {
     width: 265px;
     height: 240px;
@@ -118,8 +119,8 @@
   position: absolute;
   width: 104px;
   height: 48px;
-  left: 10%;
-  top: 50%;
+  left: 110px;
+  top: 350px;
   .posting__btn {
     cursor: pointer;
     border-radius: 6px;

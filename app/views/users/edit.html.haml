@@ -10,7 +10,7 @@
           = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn'
           = link_to "マイページに戻る", user_path(current_user), class: 'btn'
         .account-page__inner--right.user-form
-          = form_for(current_user) do |f|
+          = form_with model: current_user do |f|
             .field
               .field-label
                 = f.label :nickname
@@ -29,11 +29,14 @@
                 %span.tips 現在所有するバイクの代表
               .field-input
                 = f.text_field :bike
-            .form__mask
+            .field
+              .field-label
+                = f.label :プロフィール画像を登録する
+                %span.tips 任意
               = f.label :image, class: 'form__mask__image' do
-                = icon('fas', 'image', class: 'icon')
-                = f.file_field :image, class: 'hidden'
-                %span ← プロフィール画像を登録する
+                = f.fields_for :image do |i|
+                  = i.file_field :picture, class: 'image--post'
+            .spaceholder--edit
             .edit--prefecture
               .field__prefecture
                 .field__header
@@ -42,4 +45,4 @@
                 .field__input
                   = f.collection_select :prefecture_id, Prefecture.all, :id, :name, { prompt: '選択してください' }, { class: "category__inner" }
             .actions
-              = f.submit "Update", class: 'btn'
+              = f.submit "Update", class: 'btn', data: {"turbolinks": false}

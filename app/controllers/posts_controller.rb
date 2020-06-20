@@ -4,8 +4,8 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @post.images.new
     @historys = current_user.rooms.order("created_at DESC")
-
   end
 
   def create
@@ -35,7 +35,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :content, :prefecture_id, :category_id).merge(user_id: current_user.id)
+    params.require(:post).permit(:title, :content, :prefecture_id, :category_id, images_attributes: [:picture]).merge(user_id: current_user.id)
   end
 
   def set_parent_categories

@@ -116,13 +116,13 @@ Things you may want to cover:
 
 |Column|Type|Option|
 |------|----|------|
-|content|string|
+|content|string||
+|image  |string||
 |room   |references|type: :integer, foreign_key: true|
 |user   |references|type: :integer, foreign_key: true|
 
 - belongs_to :room
 - belongs_to :user
-- has_one :image
 
 
 ## images tables
@@ -131,13 +131,11 @@ Things you may want to cover:
 |------|----|------|
 |picture   |string ||
 |message_id|integer   |foreign_key: true|
-|chat_id   |integer   |foreign_key: true|
 |user_id   |integer   |foreign_key: true|
 |post      |references|type: :integer, foreign_key: true|
 
 
 - belongs_to :message
-- belongs_to :chat
 - mount_uploader :picture, ImageUpLoader
 - belongs_to :post
 - belongs_to :user

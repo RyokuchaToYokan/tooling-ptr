@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       resources :chats, only: :index, defaults: { format: 'json' }
     end
   end
-  resources :posts,only: [:new, :create, :edit] do
+  resources :posts, except: :show do
     collection do
       get 'get_child_categories', defaults: { format: 'json' }
       get 'get_grandchild_categories', defaults: { format: 'json' }
