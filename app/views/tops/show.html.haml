@@ -1,2 +1,23 @@
-サイドバーに子の一覧
-画面に親の一覧
+
+.wrapper
+  = render "tops/side_bar"
+  = render "tops/head-bar"
+  .main
+    .main__left
+      .main__head
+        .main--title{ id: "#{@parent.name}" }
+          .category--font
+            #{@parent.name}の一覧
+        -# .children__boxes
+        -#   - @children.each do |child|
+        -#     .grandchild__box
+        -#       = link_to child.name, "＃"
+          
+
+
+      .qanda__rooms
+        サイドバーに子の一覧
+        画面に親の一覧
+
+    .main__right
+      = render "rooms/qanda_history"

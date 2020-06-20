@@ -1,17 +1,19 @@
 class RoomsController < ApplicationController
+  before_action :set_category
+  before_action :set_history
 
   def index
     @rooms = Room.all.order("created_at DESC")
-    @historys = current_user.rooms.order("created_at DESC") if user_signed_in?
+    # @historys = current_user.rooms.order("created_at DESC") if user_signed_in?
   end
 
   def new
     @room = Room.new
-    @historys = current_user.rooms.order("created_at DESC")
+    # @historys = current_user.rooms.order("created_at DESC")
   end
 
   def create
-    @historys = current_user.rooms.order("created_at DESC") if user_signed_in?
+    # @historys = current_user.rooms.order("created_at DESC") if user_signed_in?
     @room = Room.new(room_params)
     @room.user_ids = current_user.id
     if @room.save
@@ -25,6 +27,14 @@ class RoomsController < ApplicationController
   private
   def room_params
     params.require(:room).permit(:name)
+  end
+
+  def set_category
+    @category = Category.where(ancestry: nil)
+  end
+
+  def set_history
+    @historys = current_user.rooms.order("created_at DESC") if user_signed_in?
   end
 
 end

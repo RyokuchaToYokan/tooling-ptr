@@ -23,15 +23,17 @@
               %li= link_to "投稿", new_user_registration_path, class: "side__head__box__menu__inner__content", data: {"turbolinks": false}
   -# サイドバーメニュー
   .side__menu
-    %ul
-      %li= link_to "お悩み相談室", rooms_path, class: "side__menu__contents", data: {"turbolinks": false}
-      %li= link_to "グループ一覧(工事中)", "#", class: "side__menu__contents", data: {"turbolinks": false}
-      %li= link_to "バイク板", categories_path, class: "side__menu__contents", data: {"turbolinks": false}
-      %li= link_to "おすすめルート", "#", class: "side__menu__contents", data: {"turbolinks": false}
-      %li= link_to "おすすめスポット", "#", class: "side__menu__contents", data: {"turbolinks": false}
-      %li= link_to "おすすめのお店", "#", class: "side__menu__contents", data: {"turbolinks": false}
-      %li= link_to "おすすめの施設", "#", class: "side__menu__contents", data: {"turbolinks": false}
-      %li= link_to "おすすめの装備", "#", class: "side__menu__contents", data: {"turbolinks": false}
-      %li= link_to "おすすめのアイテム", "#", class: "side__menu__contents", data: {"turbolinks": false}
-      %li= link_to "交通情報の共有", "#", class: "side__menu__contents", data: {"turbolinks": false}
-      %li= link_to "お問い合わせ(工事中)", "#", class: "side__menu__contents", data: {"turbolinks": false}
+    = link_to "お悩み相談室", rooms_path, class: "side__menu__contents", data: {"turbolinks": false}
+    = link_to "グループ一覧(工事中)", "#", class: "side__menu__contents", data: {"turbolinks": false}
+    - @category.each do |parent|
+      %ul
+        %li= link_to "#{parent.name}", top_path(parent), class: "side__menu__contents", data: {"turbolinks": false}
+      -# %li= link_to "バイク板", "/top/#{@ategory.(1)}", class: "side__menu__contents", data: {"turbolinks": false}
+      -# %li= link_to "おすすめルート", "#", class: "side__menu__contents", data: {"turbolinks": false}
+      -# %li= link_to "おすすめスポット", "#", class: "side__menu__contents", data: {"turbolinks": false}
+      -# %li= link_to "おすすめのお店", "#", class: "side__menu__contents", data: {"turbolinks": false}
+      -# %li= link_to "おすすめの施設", "#", class: "side__menu__contents", data: {"turbolinks": false}
+      -# %li= link_to "おすすめの装備", "#", class: "side__menu__contents", data: {"turbolinks": false}
+      -# %li= link_to "おすすめのアイテム", "#", class: "side__menu__contents", data: {"turbolinks": false}
+      -# %li= link_to "交通情報の共有", "#", class: "side__menu__contents", data: {"turbolinks": false}
+    = link_to "お問い合わせ(工事中)", "#", class: "side__menu__contents", data: {"turbolinks": false}

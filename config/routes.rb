@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    sessions:      'users/sessions',
+}
+
   root to: "tops#index"
-  resources :top, only: [:index, :show]
+  resources :tops, only: [:index, :show]
   resources :users, only: [:edit, :show, :update]
   resources :rooms, only: [:index, :new, :create] do
     resources :chats, only: [:index, :create]
@@ -16,5 +20,5 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :categories, only:      [:index, :show]
+  resources :categories, only: [:show]
 end
