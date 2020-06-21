@@ -3,9 +3,12 @@ class CategoriesController < ApplicationController
   before_action :set_history
   
   def show
-    @historys = current_user.rooms.order("created_at DESC")
-
+    @child = Category.find(params[:id])
+    @grandchildren = @child.children
+    @grandposts = Post.where(category_id: params[:id])
   end
+
+
 
   private
   
@@ -14,7 +17,7 @@ class CategoriesController < ApplicationController
   end
 
   def set_history
-    @historys = current_user.rooms.order("created_at DESC")
+    @historys = current_user.rooms.order("created_at DESC") if user_signed_in?
   end
 
 end

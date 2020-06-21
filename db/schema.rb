@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_19_094327) do
+ActiveRecord::Schema.define(version: 2020_06_21_040548) do
 
   create_table "categories", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -40,15 +40,22 @@ ActiveRecord::Schema.define(version: 2020_06_19_094327) do
     t.index ["post_id"], name: "index_images_on_post_id"
   end
 
+  create_table "post_categories", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_post_categories_on_category_id"
+    t.index ["post_id"], name: "index_post_categories_on_post_id"
+  end
+
   create_table "posts", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
     t.text "content", null: false
     t.integer "prefecture_id", null: false
-    t.integer "category_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_posts_on_category_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -87,7 +94,8 @@ ActiveRecord::Schema.define(version: 2020_06_19_094327) do
   add_foreign_key "chats", "rooms"
   add_foreign_key "chats", "users"
   add_foreign_key "images", "posts"
-  add_foreign_key "posts", "categories"
+  add_foreign_key "post_categories", "categories"
+  add_foreign_key "post_categories", "posts"
   add_foreign_key "posts", "users"
   add_foreign_key "room_users", "rooms"
   add_foreign_key "room_users", "users"

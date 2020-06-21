@@ -4,14 +4,26 @@
   .main
     .main__left
       .main__head
-        .main--title
+        .main--title{ id: "#{@child.name}" }
+          #{@child.name}の一覧
+      .qanda__rooms
+        .children__boxes
+          - @grandchildren.each do |grandchild|
+            .grandchild__box
+              = link_to grandchild.name, "/categories/#{grandchild.id}", class: "grandchild--title"
+      .divid
+      .qanda__rooms
+        .rooms--title
+          新着順(子の一覧 => ジャンプすると孫の一覧)
+        .rooms__boxes
+          -# - @posts.each do |post|
+          -#   = post.title
+          %ul
           
 
 
       .qanda__rooms
-        サイドバーに孫の一覧
-        メイン画面に子の一覧
-        メイン画面に孫の一覧
+        メイン画面に子の一覧 => ジャンプすると孫の一覧孫の一覧
 
     .main__right
       = render "rooms/qanda_history"

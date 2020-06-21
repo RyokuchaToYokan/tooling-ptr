@@ -1,0 +1,17 @@
+.children__boxes {
+  padding: 16px;
+  .grandchild__box {
+    padding: 5px 0 10px 20px;
+    display: inline-block;
+    .grandchild--title {
+      color: #ffb340;
+      text-decoration: none;
+      font-size: 15px;
+      list-style: none;
+    }
+  }
+}
+
+.divid {
+  margin: 25px 0;
+}

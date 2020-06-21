@@ -6,18 +6,31 @@
     .main__left
       .main__head
         .main--title{ id: "#{@parent.name}" }
-          .category--font
-            #{@parent.name}の一覧
-        -# .children__boxes
-        -#   - @children.each do |child|
-        -#     .grandchild__box
-        -#       = link_to child.name, "＃"
-          
-
-
+          #{@parent.name}の一覧
       .qanda__rooms
-        サイドバーに子の一覧
-        画面に親の一覧
+        .children__boxes
+          - @children.each do |child|
+            .grandchild__box
+              = link_to child.name, "/categories/#{child.id}", class: "grandchild--title"
+      .divid
+      .qanda__rooms
+        .rooms--title
+          新着順(親の一覧)
+        .rooms__boxes
+          -# - @parent.each do |parent|
+          -#   = parent.post.title
+          -# %ul
+            -# - @rooms.each do |room|
+            -#   .rooms__list
+            -#     %li
+            -#     = link_to room_chats_path(room), class: "qanda__room" do
+            -#       %span.qanda__room--name
+            -#         Q : #{room.name}
+            -#       %span.qanda__room--date
+            -#         = room.created_at.strftime("作成日：%Y年%m月%d日 %H時%M分")
+            -#       %span.qanda__room--message
+            -#         = room.show_last_chat
+
 
     .main__right
       = render "rooms/qanda_history"

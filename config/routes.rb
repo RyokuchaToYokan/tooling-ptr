@@ -21,4 +21,5 @@ Rails.application.routes.draw do
   end
 
   resources :categories, only: [:show]
+  resources :subcategories, only: [:show]
 end

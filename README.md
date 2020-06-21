@@ -76,12 +76,13 @@ Things you may want to cover:
 |------|----|------|
 |title        |string    |null: false|
 |content      |text      |null: false|
-|category     |references|type: :integer, foreign_key: true|
 |prefecrure_id|integer   |null: false|
 |user         |references|type: :integer foreign_key: true|
 
 - belongs_to :user
 - has_many :images
+- has_many :post_categories
+- has_many :categories, through: :post_categories
 - accepts_nested_attributes_for :images
 - belongs_to :category, optional: true
 - extend ActiveHash::Associations::ActiveRecordExtensions
@@ -141,6 +142,17 @@ Things you may want to cover:
 - belongs_to :user
 
 
+## post_categories table
+
+|Column|Type|Option|
+|------|----|------|
+|post     |references|type: :integer, foreign_key: true
+|category |reserences|type: :integer, foreign_key: true
+
+- belongs_to :post
+- belongs_to :category
+
+
 ## categories tables
 
 |Column|Type|Option|
@@ -148,9 +160,9 @@ Things you may want to cover:
 |name    |integer|null: false|
 |ancestry|integer||
 
-- has_many :posts
+- has_many :post_users
+- has_many :posts, through: :room_users
 - has_ancestry
-
 
 <!-- * System dependencies
 
