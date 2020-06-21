@@ -3,9 +3,15 @@ class CategoriesController < ApplicationController
   before_action :set_history
   
   def show
-    @child = Category.find(params[:id])
-    @grandchildren = @child.children
+    @grandchild = Category.find(params[:id])
+    @grandchildren = @grandchild.children
+    @child = @grandchild.parent
+    @parent = @child.parent
     @posts = Post.where(category_id: params[:id]).order("created_at DESC")
+    
+    add_breadcrumb @parent.name, "/tops/#{@parent.id}"
+    add_breadcrumb @child.name, "/tops/#{@parent.id}##{@child.id}"
+    add_breadcrumb @grandchild.name
   end
 
 

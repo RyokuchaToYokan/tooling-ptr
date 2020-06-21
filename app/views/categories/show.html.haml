@@ -4,13 +4,13 @@
   .main
     .main__left
       .main__head
-        .main--title{ id: "#{@child.name}" }
-          #{@child.name}の一覧
+        .main--title{ id: "#{@grandchild.name}" }
+          #{@grandchild.name}の一覧
       .qanda__rooms
-        .children__boxes
-          - @grandchildren.each do |grandchild|
-            .grandchild__box
-              = link_to grandchild.name, "/categories/#{grandchild.id}", class: "grandchild--title"
+        .breadcrumbs
+          %ul
+            %li= render_breadcrumbs separator: '</li><li>'
+          
       .divid
       .qanda__rooms
         .rooms--title

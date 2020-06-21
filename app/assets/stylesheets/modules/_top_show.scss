@@ -123,3 +123,20 @@
     }
   }
 }
+
+.breadcrumbs {
+  padding: 5px 0;
+  font-size: 14px;
+  li {
+    float: left;
+    &::before {
+      content: "\f105";
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      padding: 0 20px;
+    }
+    a {
+      color: #3ccace;
+    }
+  }
+}
