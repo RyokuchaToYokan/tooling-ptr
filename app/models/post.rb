@@ -9,4 +9,9 @@ class Post < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
+
+  validates :parent_category, :child_category, :category_id, :prefecture_id, length: { minimum: 1, message: 'を選択してください' }
+  validates :title, length: { maximum: 35, message: 'は最大で35字までです' }
+  validates :content, length: { maximum: 1000, message: 'は最大で1000字までです' }
+
 end

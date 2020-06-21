@@ -3,14 +3,14 @@
   = render "tops/head-bar"
   .main
     .main__left
-      .main__head
+      .main__head{id: "toppage"}
         .main--title{ id: "#{@parent.name}" }
           #{@parent.name}の一覧
       .qanda__rooms
-        .children__boxes
+        .category__panel
           - @children.each do |child|
-            .grandchild__box
-              = link_to child.name, "##{child.id}", class: "grandchild--title"
+            .parent--panel
+              = link_to child.name, "##{child.id}", class: "panel--font"
       .divid
 
       .qanda__rooms
@@ -25,7 +25,7 @@
                     .grandchild--list
                       = link_to grandchild.name, "/categories/#{grandchild.id}", class: "grandchild--title"               
               .return--top
-                = link_to "トップページへ戻る", "#", class: "up--arrow"
+                = link_to "トップページへ戻る", "#toppage", class: "up--arrow"
       
 
     .main__right
