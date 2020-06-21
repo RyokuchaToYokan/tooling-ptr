@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
   def show
     @child = Category.find(params[:id])
     @grandchildren = @child.children
-    @grandposts = Post.where(category_id: params[:id])
+    @posts = Post.where(category_id: params[:id]).order("created_at DESC")
   end
 
 

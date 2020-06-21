@@ -15,3 +15,111 @@
 .divid {
   margin: 25px 0;
 }
+
+.post__list {
+  .post__content {
+    height: 180px;
+    width: 50%;
+    float: left;
+    background-color: #fff;
+    padding: 5px 10px 5px 10px;
+    display: inline-block;
+    color: #000;
+    border: solid 2px #dedede;
+    border-radius: 0 0 5px 5px;
+    &--title {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      height: 20px;
+      font-size: 15px;
+      line-height: 20px;
+    }
+    &--date {
+      font-size: 11px;
+      color: #aaa;
+      height: 15px;
+      line-height: 15px;
+      display: inline-block;
+    }
+    .post__content--flex {
+      display: flex;
+      .post__content--text {
+        border-right: 2px solid #aaa;
+        overflow: hidden;
+        display: inline-block;
+        width: 65%;
+        margin-right: 10px;
+        word-break: break-all;
+        height: 110px;
+        padding: 10px;
+      }
+      .post__content--image {
+        display: inline-block;
+        width: 35%;
+        height: 110px;
+      }
+    }
+  }
+}
+
+
+.parent__box {
+  padding: 16px 18px;
+  .jump--point {
+    padding-top: 40px;
+    width: 47%;
+    float: left;
+    margin: 0 10px;
+  }
+  .parent--title {
+    background-color: #3ccace;
+    border-radius: 5px 5px 0 0;
+    display: block;
+    padding: 16px 10px 8px;
+    text-align: left;
+    margin-top: 25px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 22px;
+  }
+  .children__boxes {
+    background-color: #fff;
+    padding: 16px;
+    .grandchild__box {
+      padding: 5px 0 10px 20px;
+      display: inline-block;
+      .grandchild--list {
+        margin: 8px 0;
+        display: inline-block;
+        width: 50%;
+        float: left;
+      }
+      .grandchild--title {
+        color: #ffb340;
+        text-decoration: none;
+        font-size: 14px;
+        list-style: none;
+      }
+    }
+  }
+  .return--top {
+    background-color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 0 0 16px 16px;
+    text-align: left;
+    .up--arrow {
+      &::before {
+        content: "\f062";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        margin-right: 5px;
+      }
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+      font-size: 16px;
+    }
+  }
+}

@@ -38,7 +38,7 @@ class PostsController < ApplicationController
   private
   
   def post_params
-    params.require(:post).permit(:title, :content, :prefecture_id, :category_id, images_attributes: [:picture]).merge(user_id: current_user.id)
+    params.require(:post).permit(:title, :content, :prefecture_id, :category_id).merge(user_id: current_user.id, parent_category: params[:parent_category], child_category: params[:child_category])
   end
 
   def set_parent_categories
