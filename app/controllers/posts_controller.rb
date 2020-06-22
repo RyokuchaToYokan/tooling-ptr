@@ -13,7 +13,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
 
     if @post.save
-      redirect_to root_path, notice: "投稿しました"
+      redirect_to user_path(@post.user), notice: "投稿しました"
     else
       # @post.images.build
       @parent_category = params[:parent_category] if params[:parent_category].present?
@@ -38,10 +38,25 @@ class PostsController < ApplicationController
 
 
   def edit
+    @post = Post.find(params[:id])
+    # @user = @post.user_id
+    @child_category = @post.category.parent
+    @parent_category = @child_category.parent
   end
 
 
   def update
+    params[:post][:category_id] = "" if params[:parent_category].blank? || params[:child_category].blank?
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      redirect_to user_path(@post.user), notice: "投稿を編集しました"
+    else
+      # @post.images.build
+      @parent_category = params[:parent_category] if params[:parent_category].present?
+      @child_category = params[:child_category] if params[:child_category].present?
+      @grandchild_category = params[:post][:category_id] if params[:post][:category_id].present?
+      render :edit
+    end
   end
 
 
