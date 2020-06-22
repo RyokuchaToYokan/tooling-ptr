@@ -3,6 +3,7 @@
   = render "tops/head-bar"
   .main
     .main__left
+      = render 'layouts/notifications'
       .main__head
         .main--title
           = @user.nickname
@@ -32,7 +33,7 @@
 
         .my-post__boxes
           .my-post--title
-            投稿一覧
+            投稿一覧（新着・編集順）
           .my-post__box
             - @posts.each do |post|
               .my-post__list

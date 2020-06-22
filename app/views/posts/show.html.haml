@@ -21,11 +21,12 @@
         .content__area
           .content__area--inner
             = @post.content
-        .btn__area
-          .btn__area--edit
-            = link_to "編集", edit_post_path(@post), class: "btn--inner"
-          .btn__area--delete
-            = button_to "削除", post_path(@post), method: :delete, class:"btn--inner"
+        - if @post.user == current_user
+          .btn__area
+            .btn__area--edit
+              = link_to "編集", edit_post_path(@post), class: "btn--inner"
+            .btn__area--delete
+              = button_to "削除", post_path(@post), method: :delete, class:"btn--inner"
 
 
     .main__right

@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
     @grandchild = Category.find(params[:id])
     @child = @grandchild.parent
     @parent = @child.parent
-    @posts = Post.where(category_id: params[:id]).order("created_at DESC")
+    @posts = Post.where(category_id: params[:id]).order("updated_at DESC")
     
     add_breadcrumb @parent.name, "/tops/#{@parent.id}"
     add_breadcrumb @child.name, "/tops/#{@parent.id}##{@child.id}"
