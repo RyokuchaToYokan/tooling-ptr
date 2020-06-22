@@ -1,0 +1,32 @@
+.wrapper
+  = render "tops/side_bar"
+  = render "tops/head-bar"
+  .main
+    .main__left
+      .main__head
+        .main--title
+          = @post.title
+      .qanda__rooms
+        .author__boxes
+          .post__category
+            %ul
+              %li= render_breadcrumbs separator: '</li><li>'
+          .user__name
+            = link_to @post.user.nickname, user_path(@post.user), class: "user--font"
+          .tips
+            = @post.created_at.strftime("作成日：%Y年%m月%d日 %H時%M分")
+        .image__area
+          .image__area--inner
+            image(工事中)
+        .content__area
+          .content__area--inner
+            = @post.content
+        .btn__area
+          .btn__area--edit
+            = link_to "編集", edit_post_path(@post), class: "btn--inner"
+          .btn__area--delete
+            = button_to "削除", post_path(@post), method: :delete, class:"btn--inner"
+
+
+    .main__right
+      = render "rooms/qanda_history"

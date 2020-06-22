@@ -1,6 +1,4 @@
 class RoomsController < ApplicationController
-  before_action :set_category
-  before_action :set_history
 
   def index
     @rooms = Room.all.order("created_at DESC")
@@ -26,14 +24,6 @@ class RoomsController < ApplicationController
   
   def room_params
     params.require(:room).permit(:name)
-  end
-
-  def set_category
-    @category = Category.where(ancestry: nil)
-  end
-
-  def set_history
-    @historys = current_user.rooms.order("created_at DESC") if user_signed_in?
   end
 
 end

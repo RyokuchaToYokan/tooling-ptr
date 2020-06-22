@@ -10,7 +10,7 @@
         = form_with model: @post, class: :form__post, local: true do |f|
           = f.text_field :title, placeholder: :タイトル, class: :form__post__title
           = f.text_area :content, placeholder: :ブログ本文, class: :form__post__text
-          
+
           .select__boxes
             .category__boxes
               %p.category__about

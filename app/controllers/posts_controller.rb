@@ -1,12 +1,12 @@
 class PostsController < ApplicationController
   before_action :set_parent_categories, only: [:new, :create, :edit, :update]
-  before_action :set_category
-  before_action :set_history
+  protect_from_forgery :except => [:destroy]
 
   def new
     @post = Post.new
     @post.images.new
   end
+
 
   def create
     params[:post][:category_id] = "" if params[:parent_category].blank? || params[:child_category].blank?
@@ -22,6 +22,42 @@ class PostsController < ApplicationController
       render :new
     end
   end
+
+
+  def show
+    @post = Post.find(params[:id])
+    # @user = @post.user_id
+    @grandchild = @post.category
+    @child = @grandchild.parent
+    @parent = @child.parent
+
+    add_breadcrumb @parent.name, "/tops/#{@parent.id}"
+    add_breadcrumb @child.name, "/tops/#{@parent.id}##{@child.id}"
+    add_breadcrumb @grandchild.name, "/categories/#{@grandchild.id}"
+  end
+
+
+  def edit
+  end
+
+
+  def update
+  end
+
+
+  def destroy
+    @post = Post.find(params[:id])
+    if @post.destroy
+      redirect_to user_path(@post.user), notice: "投稿が削除されました"
+    else
+      flash.now[:alert] = "投稿の削除に失敗しました"
+      render :show
+    end
+  end
+
+  
+
+
 
   def get_child_categories
     parent_category = Category.find(params[:id])
@@ -43,14 +79,6 @@ class PostsController < ApplicationController
 
   def set_parent_categories
     @parent_categories = Category.where(ancestry: nil)
-  end
-
-  def set_category
-    @category = Category.where(ancestry: nil)
-  end
-
-  def set_history
-    @historys = current_user.rooms.order("created_at DESC") if user_signed_in?
   end
   
 end

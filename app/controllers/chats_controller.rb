@@ -1,7 +1,5 @@
 class ChatsController < ApplicationController
   before_action :set_room
-  before_action :set_category
-  before_action :set_history
 
   def index
     @chat = Chat.new
@@ -31,14 +29,6 @@ class ChatsController < ApplicationController
 
   def set_room
     @room = Room.find(params[:room_id])
-  end
-
-  def set_category
-    @category = Category.where(ancestry: nil)
-  end
-
-  def set_history
-    @historys = current_user.rooms.order("created_at DESC") if user_signed_in?
   end
 
 end
