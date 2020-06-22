@@ -58,28 +58,38 @@
   text-align: right;
   margin: 5px 35px 20px 35px;
   &--edit {
-    padding: 12px 20px;
-    color: #fff;
-    background-color: #38aef0;
     border: 0;
     border-radius: 5px;
     display: inline-block;
     margin-right: 35px;
-    cursor: pointer;
+    text-align: center;
+    .btn--inner {
+      border: none;
+      background-color: #38aef0;
+      cursor: pointer;
+      width: 72px;
+      height: 48px;
+      border-radius: 5px;
+      display: block;
+      line-height: 48px;
+      &:hover {
+        background-color: #FF9900;
+      }
+    }
   }
   &--delete {
-    padding: 12px 20px;
-    color: #fff;
-    background-color: #c33;
-    border: 0;
-    border-radius: 5px;
     display: inline-block;
     margin-right: 5px;
-    cursor: pointer;
     .btn--inner {
-      color: #fff;
       border: none;
       background-color: #c33;
+      cursor: pointer;
+      width: 72px;
+      height: 48px;
+      border-radius: 5px;
+      &:hover {
+        background-color: #FF9900;
+      }
     }
   }
 }
