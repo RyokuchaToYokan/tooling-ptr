@@ -19,6 +19,15 @@
         display: inline-flex;
         padding-left: 5px;
       }
+      &--others__user-name {
+        background-color: #ffd391;
+        border: 1px solid #dedede;
+        border-radius: 5px;
+        font-size: 16px;
+        color: #333333;
+        display: inline-flex;
+        padding-left: 5px;
+      }
       &__date {
         font-size: 12px;
         color: #999999;
