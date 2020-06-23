@@ -1,0 +1,69 @@
+.wrapper
+  = render "tops/side_bar"
+  = render "tops/head-bar"
+  .main
+    .main__left
+      .main__head
+        .main--title
+          新規投稿作成ページ
+      .qanda__rooms
+        = form_with model: @post, class: :form__post, local: true do |f|
+          = f.text_field :title, placeholder: :タイトル, class: :form__post__title
+          = f.text_area :content, placeholder: :ブログ本文, class: :form__post__text
+
+          .select__boxes
+            .category__boxes
+              %p.category__about
+              .field__category
+                .field__header
+                  = f.label :カテゴリー
+                  %span.required 必須
+                - case controller.action_name
+                - when 'new'
+                  .field__input
+                    = f.collection_select :category_id, @parent_categories.all, :id, :name, { prompt: '選択してください' }, { name: 'parent_category', id: 'parent_category', class: "category__inner" }
+                - when 'create'
+                  - if @parent_category.nil?
+                    .field__input
+                      = f.collection_select :category_id, @parent_categories.all, :id, :name, { prompt: '選択してください' }, { name: 'parent_category', id: 'parent_category', class: "category__inner" }
+                  - elsif @parent_category.present? && @child_category.nil?
+                    .field__input
+                      = f.collection_select :category_id, @parent_categories.all, :id, :name, { selected: @parent_category }, { name: 'parent_category', id: 'parent_category', class: "category__inner" }
+                    .field__input#children__select
+                      = f.collection_select :category_id, Category.find(@parent_category).children.all, :id, :name, { prompt: '選択してください' }, { name: 'child_category', id: 'child_category', class: "category__inner" }
+                  - elsif @child_category.present? && @grandchild_category.nil?
+                    .field__input
+                      = f.collection_select :category_id, @parent_categories.all, :id, :name, { selected: @parent_category }, { name: 'parent_category', id: 'parent_category', class: "category__inner" }
+                    .field__input#children__select
+                      = f.collection_select :category_id, Category.find(@parent_category).children.all, :id, :name, { selected: @child_category }, { name: 'child_category', id: 'child_category', class: "category__inner" }
+                    .field__input#grandchildren__select
+                      = f.collection_select :category_id, Category.find(@child_category).children.all, :id, :name, { prompt: '選択してください' }, { name: 'post[category_id]', id: 'grandchild_category', class: "category__inner" }
+                  - else
+                    .field__input
+                      = f.collection_select :category_id, @parent_categories.all, :id, :name, { selected: @parent_category }, { name: 'parent_category', id: 'parent_category', class: "category__inner" }
+                    .field__input#children__select
+                      = f.collection_select :category_id, Category.find(@parent_category).children.all, :id, :name, { selected: @child_category }, { name: 'child_category', id: 'child_category', class: "category__inner" }
+                    .field__input#grandchildren__select
+                      = f.collection_select :category_id, Category.find(@child_category).children.all, :id, :name, { selected: @grandchild_category }, { name: 'post[category_id]', id: 'grandchild_category', class: "category__inner" }
+            .prefecture__boxes
+              .field__prefecture
+                .field__header
+                  = f.label :都道府県
+                  %span.required 必須
+                .field__input
+                  = f.collection_select :prefecture_id, Prefecture.all, :id, :name, { prompt: '選択してください' }, { class: "category__inner" }
+
+            .form__post__btns
+              .field__header
+                = f.label :画像を投稿する
+              .form__mask
+                = f.label :image, class: 'form__mask__image' do
+                  = f.fields_for :image do |i|
+                    = i.file_field :picture, class: 'image--post'
+              = f.submit '投稿する', class: :form__post__btn, data: {"turbolinks": false}
+
+
+          
+
+    .main__right
+      = render "rooms/qanda_history"

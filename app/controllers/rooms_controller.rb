@@ -1,8 +1,8 @@
 class RoomsController < ApplicationController
+  before_action :move_to_index, except: [:index, :search]
 
   def index
-    # binding.pry
-    @rooms = Room.all
+    @rooms = Room.all.order("created_at DESC")
   end
 
   def new
@@ -18,9 +18,40 @@ class RoomsController < ApplicationController
       render :new
     end
   end
+
+
+  def edit
+    @room = Room.find(params[:id])
+  end
+
+
+  def update
+    @room = Room.find(params[:id])
+    if @room.update(room_params)
+      redirect_to rooms_path, notice: "相談室名を編集しました"
+    else
+      render :edit
+    end
+  end
+
+
+  def destroy
+    @room = Room.find(params[:id])
+    if @room.destroy
+      redirect_to rooms_path, notice: "投稿が削除されました"
+    else
+      flash.now[:alert] = "投稿の削除に失敗しました"
+      render :index
+    end
+  end
   
 
+  def search
+    @rooms = Room.search(params[:keyword])
+  end
+
   private
+  
   def room_params
     params.require(:room).permit(:name)
   end

@@ -1,5 +1,4 @@
 .side {
-  // background-color: black;
   width: 250px;
   height: 100vh;
   left: 0;
@@ -26,6 +25,7 @@
         line-height: 30px;
         width: 80%;
         word-wrap: normal;
+        font-weight: bold;
       }
       .side__head__box__menu {
         width: 60px;
@@ -67,13 +67,12 @@
     }
   }
   .side__menu {
-    // background-color: coral;
     overflow: scroll;
     padding: 100px 0;
     .side__menu__contents {
       &:hover {
         color: #000;
-        background-color: #dedede;
+        background-color: #ffd391;
       }
       color: #555;
       display: inline-block;

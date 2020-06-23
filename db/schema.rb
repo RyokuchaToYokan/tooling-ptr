@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_16_024253) do
+ActiveRecord::Schema.define(version: 2020_06_19_094327) do
+
+  create_table "categories", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "ancestry"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "chats", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
@@ -21,6 +28,33 @@ ActiveRecord::Schema.define(version: 2020_06_16_024253) do
     t.datetime "updated_at", null: false
     t.index ["room_id"], name: "index_chats_on_room_id"
     t.index ["user_id"], name: "index_chats_on_user_id"
+  end
+
+  create_table "images", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "picture"
+    t.integer "message_id"
+    t.integer "user_id"
+    t.integer "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_images_on_post_id"
+    t.index ["user_id"], name: "index_images_on_user_id"
+  end
+
+  create_table "posts", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "content", null: false
+    t.integer "prefecture_id", null: false
+    t.integer "parent_category", null: false
+    t.integer "child_category", null: false
+    t.integer "category_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_posts_on_category_id"
+    t.index ["child_category"], name: "fk_rails_c0543d25e7"
+    t.index ["parent_category"], name: "fk_rails_c1feacad92"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "room_users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -41,6 +75,7 @@ ActiveRecord::Schema.define(version: 2020_06_16_024253) do
 
   create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "prefecture_id"
+    t.string "bike", default: ""
     t.string "nickname", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -56,6 +91,12 @@ ActiveRecord::Schema.define(version: 2020_06_16_024253) do
 
   add_foreign_key "chats", "rooms"
   add_foreign_key "chats", "users"
+  add_foreign_key "images", "posts"
+  add_foreign_key "images", "users"
+  add_foreign_key "posts", "categories"
+  add_foreign_key "posts", "categories", column: "child_category"
+  add_foreign_key "posts", "categories", column: "parent_category"
+  add_foreign_key "posts", "users"
   add_foreign_key "room_users", "rooms"
   add_foreign_key "room_users", "users"
 end

@@ -28,6 +28,7 @@
   border-radius: 7px;
   display: grid;
   margin: 0 35px;
+  min-width: 652px;
   .rooms--title {
     display: inline-block;
     background-color: #3CCACE;
@@ -40,18 +41,21 @@
   }
   .rooms__boxes {
     .rooms__list {
+      background-color: #fff;
+      padding: 5px 0 5px 10px;
+      display: grid;
+      color: #000;
+      width: 46%;
+      margin: 10px;
+      float: left;
+      border-radius: 7px;
       .qanda__room {
-        background-color: #fff;
-        padding: 5px 0 5px 10px;
         display: grid;
         color: #000;
-        width: 47%;
-        margin: 10px;
-        float: left;
-        border-radius: 7px;
+        margin: 5px;
         &:hover {
           color: #000;
-          background-color: #dedede;
+          background-color: #ffd391;
         }
         &--name {
           font-size: 15px;
@@ -72,6 +76,36 @@
           text-overflow: ellipsis;
         }
       }
+    }
+  }
+}
+
+
+.btn__box {
+  height: 15px;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
+  .edit--jump {
+    font-size: 12px;
+    color: #0099e8;
+    line-height: 15px;
+    display: inline-block;
+    margin-right: 20px;
+    &:hover {
+      background-color: #FF9900;
+    }
+  }
+  .delete--jump {
+    font-size: 12px;
+    color: crimson;
+    background-color: #fff;
+    line-height: 15px;
+    display: list-item;
+    border: none;
+    cursor: pointer;
+    &:hover {
+      background-color: #FF9900;
     }
   }
 }

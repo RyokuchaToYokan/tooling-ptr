@@ -1,0 +1,99 @@
+.author__boxes {
+  text-align: right;
+  padding: 5px 20px 3px 0;
+  .post__category {
+    display: inline-block;
+    padding-top: 5px;
+    font-size: 13px;
+    li {
+      float: left;
+      &::before {
+        content: "\f105";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        padding: 0 6px;
+      }
+      a {
+        color: #3ccace;
+        &:hover {
+          color: #FF9900;
+        }
+      }
+    }
+  }
+  .user__name {
+    .user--font {
+      color: #000;
+      font-size: 20px;
+      &:hover {
+        color: #FF9900;
+      }
+    }
+
+  }
+}
+
+.image__area {
+  width: 100%;
+  max-height: 300px;
+  padding: 10px 35px;
+  &--inner {
+    width: 100%;
+    max-height: 280px;
+    text-align: center;
+    object-fit: contain;
+  }
+}
+
+.content__area {
+  padding: 15px 35px;
+  &--inner {
+    background-color: #fdfdfd;
+    white-space: pre-wrap;
+    padding: 0 20px 20px 20px;
+  }
+}
+
+.btn__area {
+  text-align: right;
+  margin: 5px 35px 20px 35px;
+  &--edit {
+    border: 0;
+    border-radius: 5px;
+    display: inline-block;
+    margin-right: 35px;
+    text-align: center;
+    .btn--inner {
+      border: none;
+      background-color: #38aef0;
+      cursor: pointer;
+      width: 72px;
+      height: 48px;
+      border-radius: 5px;
+      display: block;
+      line-height: 48px;
+      &:hover {
+        background-color: #FF9900;
+      }
+    }
+  }
+  &--delete {
+    display: inline-block;
+    margin-right: 5px;
+    .btn--inner {
+      border: none;
+      background-color: #c33;
+      cursor: pointer;
+      width: 72px;
+      height: 48px;
+      border-radius: 5px;
+      &:hover {
+        background-color: #FF9900;
+      }
+    }
+  }
+}
+
+.btn--inner {
+  color: #fff;
+}

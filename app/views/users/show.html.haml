@@ -1,0 +1,52 @@
+.wrapper
+  = render "tops/side_bar"
+  = render "tops/head-bar"
+  .main
+    .main__left
+      = render 'layouts/notifications'
+      .main__head
+        .main--title
+          = @user.nickname
+          %span のマイページ
+          -if @user == current_user
+            = link_to "[編集]", edit_user_path(current_user), class: "edit--jump"
+      .profile__area
+        .profile__area--left
+          .profile__boxes
+            .profile--title
+              プロフィール
+            .profile--picture
+              .profile--picture__inner
+                image(工事中)
+            .profile__box
+              .profile__list
+                .profile__list--left My Bike
+                .profile__list--right
+                  = @user.bike
+              .profile__list
+                .profile__list--left 都道府県
+                .profile__list--right
+                  = @user.prefecture.name
+          - if @user == current_user
+            .posting-box
+              = link_to "投稿する", new_post_path, class: "posting__btn", data: {"turbolinks": false}
+
+        .my-post__boxes
+          .my-post--title
+            投稿一覧（新着・編集順）
+          .my-post__box
+            - @posts.each do |post|
+              .my-post__list
+                = link_to post_path(post), class: "my-post__content" do
+                  .my-post__content--title
+                    = post.title
+                  %span.my-post__content--date
+                    = post.created_at.strftime("作成日：%Y年%m月%d日 %H時%M分")
+                  .my-post__content--flex
+                    .my-post__content--text
+                      = post.content
+                    .my-post__content--image
+                      image
+
+    .main__right
+      = render "rooms/qanda_history"

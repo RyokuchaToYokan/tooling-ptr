@@ -1,0 +1,37 @@
+.wrapper
+  = render "tops/side_bar"
+  = render "tops/head-bar"
+  .main
+    .main__left
+      .main__head
+        .main--title{ id: "#{@grandchild.name}" }
+          #{@grandchild.name}の一覧
+      .qanda__rooms
+        .breadcrumbs
+          %ul
+            %li= render_breadcrumbs separator: '</li><li>'
+          
+      .divid
+      .qanda__rooms
+        .rooms--title
+          新着順・編集順
+        .rooms__boxes
+          - @posts.each do |post|
+            .post__list
+              = link_to post_path(post), class: "post__content" do
+                .post__content--title
+                  = post.title
+                %span.post__content--date
+                  = post.created_at.strftime("作成日：%Y年%m月%d日 %H時%M分")
+                .post__content--flex
+                  .post__content--text
+                    = post.content
+                  .post__content--image
+                    image
+          
+
+
+      .qanda__rooms
+
+    .main__right
+      = render "rooms/qanda_history"

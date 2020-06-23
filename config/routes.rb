@@ -1,11 +1,29 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    sessions:      'users/sessions',
+}
+
   root to: "tops#index"
-  resources :users, only: [:edit, :update]
-  resources :rooms, only: [:index, :new, :create] do
+  resources :tops, only: [:index, :show]
+  resources :users, only: [:edit, :show, :update]
+  resources :rooms, except: [:show] do
     resources :chats, only: [:index, :create]
     namespace :api do
       resources :chats, only: :index, defaults: { format: 'json' }
     end
+    collection do
+      get 'search'
+    end
   end
+  resources :posts, except: :index do
+    collection do
+      get 'get_child_categories', defaults:      { format: 'json' }
+      get 'get_grandchild_categories', defaults: { format: 'json' }
+      get 'search'
+    end
+  end
+
+  resources :categories, only: [:show]
+  resources :subcategories, only: [:show]
 end

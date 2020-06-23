@@ -1,0 +1,31 @@
+.wrapper
+  = render "tops/side_bar"
+  = render "tops/head-bar"
+  .main
+    .main__left
+      .main__head{id: "toppage"}
+        .main--title{ id: "#{@parent.name}" }
+          #{@parent.name}の一覧
+      .qanda__rooms
+        .category__panel
+          - @children.each do |child|
+            .parent--panel
+              = link_to child.name, "##{child.id}", class: "panel--font"
+      .divid
+
+      .qanda__rooms
+        .parent__box
+          - @children.each do |child|
+            .jump--point{ id: "#{child.id}" }
+              .parent--title
+                = child.name
+              .children__boxes
+                .grandchild__box
+                  - child.children.each do |grandchild|
+                    .grandchild--list
+                      = link_to grandchild.name, "/categories/#{grandchild.id}", class: "grandchild--title"               
+              .return--top
+                = link_to "トップページへ戻る", "#toppage", class: "up--arrow"
+      
+    .main__right
+      = render "rooms/qanda_history"

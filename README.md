@@ -19,6 +19,7 @@ Things you may want to cover:
 |mail         |string|null: false, unique: true|
 |password     |string|null: false|
 |prefecture_id|integer||
+|bike         |string||
 
 - has_many :group_users
 - has_many :groups, through: :group_users
@@ -27,7 +28,10 @@ Things you may want to cover:
 - has_many :room_users
 - has_many :rooms, through: :rooms_users
 - has_many :chat
+- has_one :images
 - validates :nickname, presence: true, uniqueness: true
+- attribute :prefecture_id, :integer, default: 48
+
 
 
 ## group_users table
@@ -58,26 +62,36 @@ Things you may want to cover:
 |Column|Type|Option|
 |------|----|------|
 |content |string|null: false|
-|group_id|references|foreign_key: true|
-|user_id |references|foreign_key: true|
+|group   |references|foreign_key: true|
+|user    |references|foreign_key: true|
 
 - belongs_to :group
 - belongs_to :user
-- has_many :images
+- has_one :images
 
 
 ## posts table
 
 |Column|Type|Option|
 |------|----|------|
-|user_id      |integer|null: false, foreign_key: true|
-|content      |string|null: false|
-|category_id  |integer|null: false|
-|prefecrure_id|integer|null: false|
+|title          |string    |null: false|
+|content        |text      |null: false|
+|prefecrure_id  |integer   |null: false|
+|category       |references|type: :integer foreign_key: true|
+|parent_category|integer   |null: false|
+|child_category |integer   |null: false|
+|user           |references|type: :integer foreign_key: true|
+
+- add_foreign_key :posts, :categories, column: :parent_category
+- add_foreign_key :posts, :categories, column: :child_category
 
 - belongs_to :user
 - has_many :images
 - belongs_to :category
+- accepts_nested_attributes_for :images
+- belongs_to :category, optional: true
+- extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :prefecture
 
 
 ## rooms table
@@ -108,8 +122,8 @@ Things you may want to cover:
 
 |Column|Type|Option|
 |------|----|------|
-|content|string|
-|image  |string|
+|content|string||
+|image  |string||
 |room   |references|type: :integer, foreign_key: true|
 |user   |references|type: :integer, foreign_key: true|
 
@@ -121,14 +135,28 @@ Things you may want to cover:
 
 |Column|Type|Option|
 |------|----|------|
-|message_id|integer|null: false, foreign_key: true|
-|post_id   |integer|null: false, foreign_key: true|
-|chat_id   |integer|null: false, foreign_key: true|
+|picture   |string ||
+|message_id|integer   |foreign_key: true|
+|user_id   |integer   |foreign_key: true|
+|post      |references|type: :integer, foreign_key: true|
+
 
 - belongs_to :message
+- mount_uploader :picture, ImageUpLoader
 - belongs_to :post
-- belongs_to :chat
+- belongs_to :user
 
+
+
+## categories tables
+
+|Column|Type|Option|
+|------|----|------|
+|name    |integer|null: false|
+|ancestry|integer||
+
+- has_many :posts
+- has_ancestry
 
 <!-- * System dependencies
 
