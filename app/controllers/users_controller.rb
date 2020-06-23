@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :set_user, except: [:new]
 
   def new
     @user = User.new
@@ -6,10 +7,10 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def show
-    @user = User.find(params[:id])
     @posts = @user.posts.order("updated_at DESC") 
   end
 
@@ -26,7 +27,11 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:nickname, :email, :bike, :prefecture_id, images_attributes: [:picture])
+    params.require(:user).permit(:nickname, :email, :bike, :prefecture_id, :image)
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 
 end

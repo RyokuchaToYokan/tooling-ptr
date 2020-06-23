@@ -9,6 +9,11 @@
           %h5 アカウントの編集
           = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn'
           = link_to "マイページに戻る", user_path(current_user), class: 'btn'
+          .preview
+            .preview__inner
+              = image_tag @user.image.to_s, class: "preview__inner--picture"
+            .preview__message
+              現在のプロフィール画像
         .account-page__inner--right.user-form
           = form_with model: current_user do |f|
             .field
@@ -31,11 +36,10 @@
                 = f.text_field :bike
             .field
               .field-label
-                = f.label :プロフィール画像を登録する
+                = f.label :プロフィール画像を変更する
                 %span.tips 任意
-              = f.label :image, class: 'form__mask__image' do
-                = f.fields_for :image do |i|
-                  = i.file_field :picture, class: 'image--post'
+              = f.label :image, class: 'image__post' do
+                = f.file_field :image, class: 'image__post__btn'
             .spaceholder--edit
             .edit--prefecture
               .field__prefecture

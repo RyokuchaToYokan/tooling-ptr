@@ -17,7 +17,7 @@
               プロフィール
             .profile--picture
               .profile--picture__inner
-                image(工事中)
+                = image_tag @user.image.to_s, class: "prof--image"
             .profile__box
               .profile__list
                 .profile__list--left My Bike

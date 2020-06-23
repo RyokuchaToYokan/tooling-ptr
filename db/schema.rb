@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_19_094327) do
+ActiveRecord::Schema.define(version: 2020_06_23_142559) do
 
   create_table "categories", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -33,12 +33,10 @@ ActiveRecord::Schema.define(version: 2020_06_19_094327) do
   create_table "images", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "picture"
     t.integer "message_id"
-    t.integer "user_id"
     t.integer "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_images_on_post_id"
-    t.index ["user_id"], name: "index_images_on_user_id"
   end
 
   create_table "posts", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -84,6 +82,7 @@ ActiveRecord::Schema.define(version: 2020_06_19_094327) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["nickname"], name: "index_users_on_nickname", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -92,7 +91,6 @@ ActiveRecord::Schema.define(version: 2020_06_19_094327) do
   add_foreign_key "chats", "rooms"
   add_foreign_key "chats", "users"
   add_foreign_key "images", "posts"
-  add_foreign_key "images", "users"
   add_foreign_key "posts", "categories"
   add_foreign_key "posts", "categories", column: "child_category"
   add_foreign_key "posts", "categories", column: "parent_category"

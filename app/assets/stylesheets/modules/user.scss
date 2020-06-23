@@ -139,22 +139,10 @@
 }
 
 
-.form__mask {
-  display: inline-block;
-  margin: 0 5px 0 12px;
-  font-size: 30px;
-  position: relative;
-  .form__mask__image {
-    cursor: pointer;
-    .hidden {
-      display: none;
-    }
-    .image--post {
-      font-size: 15px;
-    }
-    span {
-      font-size: 13px;
-    }
+.image__post {
+  &__btn {
+    font-size: 15px;
+    // width: 128px;
   }
 }
 
@@ -205,4 +193,17 @@
 
 #user_image_picture {
   width: 130px;
+}
+
+.preview {
+  padding: 40px 40px 0 0;
+  &__inner {
+    background-color: #dedede;
+    height: 250px;
+    &--picture {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+  }
 }

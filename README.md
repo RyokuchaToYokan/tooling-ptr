@@ -20,6 +20,7 @@ Things you may want to cover:
 |password     |string|null: false|
 |prefecture_id|integer||
 |bike         |string||
+image         |string||
 
 - has_many :group_users
 - has_many :groups, through: :group_users
@@ -28,9 +29,9 @@ Things you may want to cover:
 - has_many :room_users
 - has_many :rooms, through: :rooms_users
 - has_many :chat
-- has_one :images
 - validates :nickname, presence: true, uniqueness: true
 - attribute :prefecture_id, :integer, default: 48
+- mount_uploader :image, ImageUploader
 
 
 
@@ -137,14 +138,12 @@ Things you may want to cover:
 |------|----|------|
 |picture   |string ||
 |message_id|integer   |foreign_key: true|
-|user_id   |integer   |foreign_key: true|
 |post      |references|type: :integer, foreign_key: true|
 
 
 - belongs_to :message
 - mount_uploader :picture, ImageUpLoader
 - belongs_to :post
-- belongs_to :user
 
 
 

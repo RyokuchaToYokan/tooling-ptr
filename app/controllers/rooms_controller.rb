@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :move_to_index, except: [:index, :search]
+  # before_action :move_to_index, except: [:index, :search]
 
   def index
     @rooms = Room.all.order("created_at DESC")
