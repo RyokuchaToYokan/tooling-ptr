@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2020_06_19_094327) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_images_on_post_id"
+    t.index ["user_id"], name: "index_images_on_user_id"
   end
 
   create_table "posts", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -91,6 +92,7 @@ ActiveRecord::Schema.define(version: 2020_06_19_094327) do
   add_foreign_key "chats", "rooms"
   add_foreign_key "chats", "users"
   add_foreign_key "images", "posts"
+  add_foreign_key "images", "users"
   add_foreign_key "posts", "categories"
   add_foreign_key "posts", "categories", column: "child_category"
   add_foreign_key "posts", "categories", column: "parent_category"
