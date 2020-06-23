@@ -11,15 +11,6 @@
     .room-form__field--right
       = f.text_field :name, class: 'room-form__input', placeholder: '相談概要を入力してください'
   .room-form__field.clearfix
-    / この部分はインクリメンタルサーチ（ユーザー追加の非同期化のときに使用します
-  -# .room-form__field.clearfix
-  -#   .room-form__field--left
-      -# %label.room-form__label{:for => "chat_group_チャットメンバー"} チャットメンバー
-    -# .room-form__field--right
-      / グループ作成機能の追加時はここにcollection_check_boxesの記述を入れてください
-      -# = f.collection_check_boxes :user_ids, User.all, :id, :name
-      / この部分はインクリメンタルサーチ（ユーザー追加の非同期化のときに使用します
-  .room-form__field.clearfix
     .room-form__field--left
     .room-form__field--right
       = f.submit class: 'room-form__action-btn'

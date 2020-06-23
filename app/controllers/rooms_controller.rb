@@ -20,10 +20,17 @@ class RoomsController < ApplicationController
 
 
   def edit
+    @room = Room.find(params[:id])
   end
 
 
   def update
+    @room = Room.find(params[:id])
+    if @room.update(room_params)
+      redirect_to rooms_path, notice: "相談室名を編集しました"
+    else
+      render :edit
+    end
   end
 
 

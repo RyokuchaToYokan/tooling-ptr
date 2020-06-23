@@ -1,0 +1,12 @@
+.wrapper
+  = render "tops/side_bar"
+  = render "tops/head-bar"
+  .main
+    .main__left
+      .main__head
+        .main--title
+          相談室名編集ページ
+      .qanda__rooms
+        = render partial: 'form', locals: { room: @room }
+    .main__right
+      = render "qanda_history"

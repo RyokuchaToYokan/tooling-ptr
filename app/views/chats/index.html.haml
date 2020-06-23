@@ -5,14 +5,7 @@
     .main__left
       .main__head
         .main--title
-          -# -if current_user.id == @room.users.ids[0]
-          -#   .btn__box
-          -#     %ul
-          -#       %li= link_to "[編集]", edit_user_path(current_user), class: "edit--jump", data: {"turbolinks": false}
-          -#       %li= button_to "[削除]", room_path(@room), method: :delete, class: "delete--jump", data: {"turbolinks": false}
           = "Q : #{@room.name}"
-          
-
 
       .qanda__rooms
         .chats

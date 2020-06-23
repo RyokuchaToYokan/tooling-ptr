@@ -34,7 +34,7 @@
                   = room.show_last_chat
               - if current_user.id == room.users.ids[0]
                 .btn__box
-                  = link_to "[編集]", edit_user_path(current_user), class: "edit--jump"
+                  = link_to "[編集]", edit_room_path(room), class: "edit--jump"
                   = button_to "[削除]", room_path(room), method: :delete, class: "delete--jump"
               - else
                 .btn__box
