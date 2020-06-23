@@ -30,12 +30,13 @@
                   = room.created_at.strftime("作成日：%Y年%m月%d日 %H時%M分")
                 %span.qanda__room--message
                   = room.show_last_chat
-              - if current_user.id == room.users.ids[0]
-                .btn__box
-                  = link_to "[編集]", edit_room_path(room), class: "edit--jump"
-                  = button_to "[削除]", room_path(room), method: :delete, class: "delete--jump"
-              - else
-                .btn__box
+              - if user_signed_in?
+                - if current_user.id == room.users.ids[0]
+                  .btn__box
+                    = link_to "[編集]", edit_room_path(room), class: "edit--jump"
+                    = button_to "[削除]", room_path(room), method: :delete, class: "delete--jump"
+                - else
+                  .btn__box
 
     .main__right
       = render "qanda_history"
