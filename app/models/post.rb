@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
-  has_many :images
+  has_many :images, dependent: :destroy
   has_many :post_categories
   has_many :categories, through: :post_categories
   

@@ -17,6 +17,25 @@ class RoomsController < ApplicationController
       render :new
     end
   end
+
+
+  def edit
+  end
+
+
+  def update
+  end
+
+
+  def destroy
+    @room = Room.find(params[:id])
+    if @room.destroy
+      redirect_to rooms_path, notice: "投稿が削除されました"
+    else
+      flash.now[:alert] = "投稿の削除に失敗しました"
+      render :index
+    end
+  end
   
 
 

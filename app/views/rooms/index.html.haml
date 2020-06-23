@@ -3,6 +3,7 @@
   = render "tops/head-bar"
   .main
     .main__left
+      = render 'layouts/notifications'
       .main__head
         .main--title
           お悩み相談室
@@ -22,18 +23,22 @@
         .rooms--title
           相談室一覧（新着順）
         .rooms__boxes
-          %ul
-            - @rooms.each do |room|
-              .rooms__list
-                %li
-                = link_to room_chats_path(room), class: "qanda__room" do
-                  %span.qanda__room--name
-                    Q : #{room.name}
-                  %span.qanda__room--date
-                    = room.created_at.strftime("作成日：%Y年%m月%d日 %H時%M分")
-                  %span.qanda__room--message
-                    = room.show_last_chat
-              
+          - @rooms.each do |room|
+            .rooms__list
+              = link_to room_chats_path(room), class: "qanda__room", id: "#{room.users.ids[0]}" do
+                %span.qanda__room--name
+                  Q : #{room.name}
+                %span.qanda__room--date
+                  = room.created_at.strftime("作成日：%Y年%m月%d日 %H時%M分")
+                %span.qanda__room--message
+                  = room.show_last_chat
+              - if current_user.id == room.users.ids[0]
+                .btn__box
+                  = link_to "[編集]", edit_user_path(current_user), class: "edit--jump"
+                  = button_to "[削除]", room_path(room), method: :delete, class: "delete--jump"
+              - else
+                .btn__box
+
 
 
     .main__right

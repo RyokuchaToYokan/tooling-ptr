@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   root to: "tops#index"
   resources :tops, only: [:index, :show]
   resources :users, only: [:edit, :show, :update]
-  resources :rooms, only: [:index, :new, :create] do
+  resources :rooms, except: [:show] do
     resources :chats, only: [:index, :create]
     namespace :api do
       resources :chats, only: :index, defaults: { format: 'json' }
