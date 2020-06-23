@@ -14,4 +14,17 @@ class Post < ApplicationRecord
   validates :title, length: { maximum: 35, message: 'は最大で35字までです' }
   validates :content, length: { maximum: 1000, message: 'は最大で1000字までです' }
 
+
+  def self.search(search)
+    if search
+      Post.where('title LIKE(?)', "%#{search}%")
+      if search
+        Post.where('content LIKE(?)', "%#{search}%")
+      end
+    else
+      Post.all
+    end
+  end
+
+
 end

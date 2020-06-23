@@ -1,4 +1,5 @@
 class RoomsController < ApplicationController
+  before_action :move_to_index, except: [:index, :search]
 
   def index
     @rooms = Room.all.order("created_at DESC")
@@ -45,6 +46,9 @@ class RoomsController < ApplicationController
   end
   
 
+  def search
+    @rooms = Room.search(params[:keyword])
+  end
 
   private
   

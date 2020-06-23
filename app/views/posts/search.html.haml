@@ -1,0 +1,32 @@
+.wrapper
+  = render "tops/side_bar"
+  = render "tops/head-bar"
+  .main
+    .main__left
+      .main__head
+        .main--title
+          投稿検索結果の一覧
+          
+      .qanda__rooms
+        .rooms--title
+          新着順・編集順
+        .rooms__boxes
+          - @posts.each do |post|
+            .post__list
+              = link_to post_path(post), class: "post__content" do
+                .post__content--title
+                  = post.title
+                .post__content--breads
+                  %span.post__content--bread
+                    = post.category.parent.parent.name
+                  %span.post__content--bread
+                    = post.category.parent.name
+                  %span.post__content--bread
+                    = post.category.name
+                .post__content--date
+                  = post.created_at.strftime("作成日：%Y年%m月%d日 %H時%M分")
+                .post__content--flex
+                  .post__content--text
+                    = post.content
+                  .post__content--image
+                    image

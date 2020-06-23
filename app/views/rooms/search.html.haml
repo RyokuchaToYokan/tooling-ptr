@@ -3,11 +3,9 @@
   = render "tops/head-bar"
   .main
     .main__left
-      = render 'layouts/notifications'
       .main__head
         .main--title
-          お悩み相談室
-        
+          相談室検索結果ページ
       .qanda__rooms
         = form_with(url: search_rooms_path, local: true, method: :get, class: "search-box") do |form|
           = form.text_field :keyword, placeholder: "相談室を検索する", class: "input"
@@ -36,8 +34,5 @@
                   = button_to "[削除]", room_path(room), method: :delete, class: "delete--jump"
               - else
                 .btn__box
-
-
-
     .main__right
       = render "qanda_history"

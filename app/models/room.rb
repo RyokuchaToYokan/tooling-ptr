@@ -18,4 +18,9 @@ class Room < ApplicationRecord
       "まだメッセージはありません"
     end
   end
+
+  def self.search(search)
+    return Room.all unless search
+    Room.where('name LIKE(?)', "%#{search}%")
+  end
 end
