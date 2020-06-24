@@ -37,7 +37,11 @@
         .profile--picture__inner {
           padding: 5px;
           object-fit: contain;
-          .prof--image {
+          &--font {
+            padding-left: 5px;
+            width: 60%;
+          }
+          &--image {
             width: 249px;
             height: 167px;
             object-fit: contain;

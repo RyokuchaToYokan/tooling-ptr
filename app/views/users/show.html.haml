@@ -17,7 +17,10 @@
               プロフィール
             .profile--picture
               .profile--picture__inner
-                = image_tag @user.image.to_s, class: "prof--image"
+              - if @user.image.present?
+                = image_tag @user.image.to_s, class: "profile--picture__inner--image"
+              -else
+                .profile--picture__inner--font プロフィール画像を設定していません
             .profile__box
               .profile__list
                 .profile__list--left My Bike
@@ -46,7 +49,7 @@
                     .my-post__content--text
                       = post.content
                     .my-post__content--image
-                      image
+                      image(工事中)
 
     .main__right
       = render "rooms/qanda_history"

@@ -1,5 +1,5 @@
 class TopsController < ApplicationController
-# 削除ではgem data-confirm-modalを使用すること
+# 追加機能として削除ではgem data-confirm-modalを使用すること
 
   def index
   end

@@ -19,23 +19,8 @@
   }
   .form__post__btns {
     display: inline-block;
-    margin: 0 15px;
+    margin: 0 20px;
     text-align: center;
-    .form__mask {
-      display: inline-block;
-      margin: 0;
-      font-size: 30px;
-      .form__mask__image {
-        cursor: pointer;
-        .hidden {
-          display: none;
-        }
-        .image--post {
-          font-size: 15px;
-          width: 121px;
-        }
-      }
-    }
     .form__post__btn {
       cursor: pointer;
       border-radius: 6px;
@@ -166,5 +151,61 @@
     background: right 50% no-repeat, -webkit-linear-gradient(top, #fff 0%,#efebe1 100%);
     background: right 50% no-repeat, linear-gradient(to bottom, #fff 0%,#efebe1 100%);
     background-size: 20px, 100%;
+  }
+}
+
+
+
+
+//投稿写真関係
+.picture__area {
+  background-color: #f0ebeb;
+  height: 245px;
+  width: 500px;
+  margin: 15px auto;
+  .area--header {
+  }
+  #image-box {
+    margin: 16px auto 0;
+    flex-wrap: wrap;
+    overflow: hidden;
+    height: 176px;
+    #previews {
+      display: flex;
+      height: 150px;
+      .preview-box {
+        height: 150px;
+        width: 125px;
+        margin: 0 16px 10px 0;
+        .upper-box {
+          height: 112px;
+          width: 100%;
+          img{
+            width: 100%;
+            height: 112px;
+            object-fit: contain;
+          }
+        }
+      }
+    }
+    .js-file_group {
+      cursor: inherit;
+      float: left;
+      .js-file {
+        width: 100px;
+        font-size: 12px;
+        margin-right: 42px;
+        color: #f0ebeb;
+      }
+    }
+  }
+  .delete-box {
+    color: #00b0ff;
+    height: 27px;
+    line-height: 27px;
+    border: 1px solid #eee;
+    background: #f5f5f5;
+    width: 110px;
+    cursor: pointer;
   }
 }
