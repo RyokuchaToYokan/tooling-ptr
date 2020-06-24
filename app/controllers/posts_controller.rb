@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_parent_categories, only: [:new, :create, :edit, :update]
   protect_from_forgery :except => [:destroy]
-  before_action :redirect_to_roo_path, except: [:show, :search]
 
   def new
     @post = Post.new

@@ -36,15 +36,15 @@
       .chat--form
         - if user_signed_in?
           = form_for [@room, @chat] do |f|
-            = f.text_field :content, class: 'form__chat', placeholder: 'type a chat', data: {"turbolinks": false}
+            = f.text_field :content, class: 'form__chat', placeholder: 'type a chat'
             .form__mask
               = f.label :image, class: 'form__mask__image' do
                 = icon('fas', 'image', class: 'icon')
                 = f.file_field :image, class: 'hidden'
-            = f.submit 'Send', class: 'form__submit', id: "new_chat", data: {"turbolinks": false}
+            = f.submit 'Send', class: 'form__submit', id: "new_chat"
         - else
           .go--registration
-            = link_to "Create Acount", new_user_registration_path, class: "regist--btn", data: {"turbolinks": false}
+            = link_to "Create Acount", new_user_registration_path, class: "regist--btn"
 
     .main__right
       = render "rooms/qanda_history"

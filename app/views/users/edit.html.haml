@@ -49,4 +49,4 @@
                 .field__input
                   = f.collection_select :prefecture_id, Prefecture.all, :id, :name, { prompt: '選択してください' }, { class: "category__inner" }
             .actions
-              = f.submit "Update", class: 'btn', data: {"turbolinks": false}
+              = f.submit "Update", class: 'btn'

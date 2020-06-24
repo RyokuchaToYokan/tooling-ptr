@@ -29,7 +29,7 @@
                   = @user.prefecture.name
           - if @user == current_user
             .posting-box
-              = link_to "投稿する", new_post_path, class: "posting__btn", data: {"turbolinks": false}
+              = link_to "投稿する", new_post_path, class: "posting__btn"
 
         .my-post__boxes
           .my-post--title
