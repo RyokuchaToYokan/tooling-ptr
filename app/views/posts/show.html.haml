@@ -17,7 +17,11 @@
             = @post.created_at.strftime("作成日：%Y年%m月%d日 %H時%M分")
         .image__area
           .image__area--inner
-            image(工事中)
+            - if @post.persisted?
+              - @post.images.each_with_index do |image, i|
+                %div{class: "preview-box", data: {index: i}}
+                  .upper-box
+                    = image_tag image.picture.url, data: {index: i}
         .content__area
           .content__area--inner
             = @post.content
