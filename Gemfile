@@ -41,6 +41,13 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem 'pry-rails'
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
+  gem 'capistrano-rails-console'
 end
 
 group :development do
@@ -65,7 +72,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
-gem 'pry-rails'
 gem "font-awesome-sass"
 gem "haml-rails"
 gem "devise"
@@ -77,3 +83,7 @@ gem "mini_magick"
 gem "ancestry"
 gem "active_hash"
 gem 'breadcrumbs_on_rails'
+
+group :production do
+  gem 'unicorn'
+end
