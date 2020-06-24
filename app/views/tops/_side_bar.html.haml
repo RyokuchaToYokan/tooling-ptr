@@ -13,17 +13,17 @@
           %ul
             - if user_signed_in?
               %li= link_to "マイページ", user_path(current_user), class: "side__head__box__menu__inner__content", data: {"turbolinks": false}
-              %li= link_to "マイグループ\n↑(工事中)", "#", class: "side__head__box__menu__inner__content", data: {"turbolinks": false}
+              -# %li= link_to "マイグループ\n↑(工事中)", "#", class: "side__head__box__menu__inner__content", data: {"turbolinks": false}
               %li= link_to "投稿", new_post_path, class: "side__head__box__menu__inner__content", data: {"turbolinks": false}
             - else
               %li= link_to "マイページ", new_user_registration_path, class: "side__head__box__menu__inner__content", data: {"turbolinks": false}
-              %li= link_to "マイグループ\n↑(工事中)", new_user_registration_path, class: "side__head__box__menu__inner__content", data: {"turbolinks": false}
+              -# %li= link_to "マイグループ\n↑(工事中)", new_user_registration_path, class: "side__head__box__menu__inner__content", data: {"turbolinks": false}
               %li= link_to "投稿", new_user_registration_path, class: "side__head__box__menu__inner__content", data: {"turbolinks": false}
   -# サイドバーメニュー
   .side__menu
     = link_to "お悩み相談室", rooms_path, class: "side__menu__contents", data: {"turbolinks": false}
-    = link_to "グループ一覧(工事中)", "#", class: "side__menu__contents", data: {"turbolinks": false}
+    -# = link_to "グループ一覧(工事中)", "#", class: "side__menu__contents", data: {"turbolinks": false}
     - @category.each do |parent|
       %ul
         %li= link_to "#{parent.name}", top_path(parent), class: "side__menu__contents", data: {"turbolinks": false}
-    = link_to "お問い合わせ(工事中)", "#", class: "side__menu__contents", data: {"turbolinks": false}
+    -# = link_to "お問い合わせ(工事中)", "#", class: "side__menu__contents", data: {"turbolinks": false}
