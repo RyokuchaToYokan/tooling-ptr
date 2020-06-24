@@ -85,5 +85,5 @@ gem "active_hash"
 gem 'breadcrumbs_on_rails'
 
 group :production do
-  gem 'unicorn', '5.4.1'
+  gem 'unicorn'
 end
