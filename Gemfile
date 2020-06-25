@@ -82,7 +82,8 @@ gem "carrierwave"
 gem "mini_magick"
 gem "ancestry"
 gem "active_hash"
-gem 'breadcrumbs_on_rails'
+gem "breadcrumbs_on_rails"
+gem "fog-aws"
 
 group :production do
   gem 'unicorn', '5.4.1'

@@ -1,4 +1,4 @@
-# Tooling-ptr
+# Tooling-Patner
 
 # 概要
 ## ツーリングに役立つ情報の交換まとめサイト
