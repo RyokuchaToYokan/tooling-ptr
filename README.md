@@ -13,7 +13,7 @@
 * AWS
 * URL : http://54.65.53.35/
 * ID : toolingptr
-* Pass : toolingptr2020
+* Pass : toolingptr00
 ## テスト用アカウント
 ### ①吾郎
 * メールアドレス : 555@555.555
